@@ -5,9 +5,9 @@ function TasksFilter() {
 
     return (
 
-        <ul class="filters">
+        <ul className="filters">
           <li>
-            <button class="selected">All</button>
+            <button className="selected">All</button>
           </li>
           <li>
             <button>Active</button>

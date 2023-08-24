@@ -3,14 +3,17 @@ import React from "react";
 import Task from '../Task/Task.js';
 
 
-function TaskList () {
+function TaskList (props) {
 
     return (
 
-        <ul class="todo-list">
+        <ul className="todo-list">
 
             {
-                [1,2,4].map( node => <Task/>)
+                props.todoList.map( node => {
+                  let value = node.value;
+                  return <Task value={value} key = {node.id} deleteTask={props.deleteTask} id={node.id} />
+                })
             }
               
               {/* <li class="completed">
