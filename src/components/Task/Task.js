@@ -1,18 +1,32 @@
 import React from "react";
-import { useState } from "react";
+
+import '../Task/Task.css';
 
 
-function Task ({value, deleteTask, id, important}) {
 
-    const [importantMark, setImportantMark] = useState(important);
+function Task ({value, deleteTask, id, onToggleImportant, onToggleDone, important, done}) {
 
+   
+    let taskClass = 'description';
+    if (important) {
+      taskClass += ' classImportant';
+    }
+    if (done) {
+      taskClass += ' classDone';
+    }
+    
+   
 
     return (
         <li>
                 <div className="view">
-                  <input className="toggle" type="checkbox"/>
+                  <input className="toggle" onChange={onToggleImportant} type="checkbox"/>
                   <label>
-                    <span className="description">{value}</span>
+                    <span className={taskClass}
+                          
+                    onClick={onToggleDone}
+                  
+                    >{value}</span>
                     <span className="created">created 17 seconds ago</span>
                   </label>
                   <button className="icon icon-edit"></button>

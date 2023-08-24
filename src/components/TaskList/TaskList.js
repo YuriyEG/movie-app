@@ -11,8 +11,15 @@ function TaskList (props) {
 
             {
                 props.todoList.map( node => {
+                  
                   let value = node.value;
-                  return <Task value={value} key = {node.id} deleteTask={props.deleteTask} id={node.id} important={props.important}/>
+                  return <Task value={value} key = {node.id} deleteTask={props.deleteTask} id={node.id}
+                    onToggleDone={() => props.onToggleDone(node.id)}
+                    onToggleImportant={() => props.onToggleImportant(node.id)}
+                    done={node.done}
+                    important={node.important}
+                    
+                  />
                 })
             }
               
