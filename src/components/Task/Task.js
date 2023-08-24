@@ -1,8 +1,10 @@
 import React from "react";
+import { useState } from "react";
 
 
-function Task ({value, deleteTask, id}) {
+function Task ({value, deleteTask, id, important}) {
 
+    const [importantMark, setImportantMark] = useState(important);
 
 
     return (

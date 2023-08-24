@@ -12,7 +12,7 @@ function TaskList (props) {
             {
                 props.todoList.map( node => {
                   let value = node.value;
-                  return <Task value={value} key = {node.id} deleteTask={props.deleteTask} id={node.id} />
+                  return <Task value={value} key = {node.id} deleteTask={props.deleteTask} id={node.id} important={props.important}/>
                 })
             }
               

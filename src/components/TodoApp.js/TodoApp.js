@@ -15,7 +15,7 @@ function TodoApp () {
     function createTask(e) {
 
         if (e.keyCode === 13 && (e.target.value).replace(/ /g, '').length ) {
-          const newTask = { value: e.target.value, id: todoList.length + Math.random() };
+          const newTask = { value: e.target.value, id: todoList.length + Math.random(), important: false };
           e.target.value = '';
           const newTodoList = [newTask, ...todoList];
           setTodoList(newTodoList);
