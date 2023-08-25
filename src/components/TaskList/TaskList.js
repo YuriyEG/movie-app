@@ -18,6 +18,7 @@ function TaskList (props) {
                     onToggleImportant={() => props.onToggleImportant(node.id)}
                     done={node.done}
                     important={node.important}
+                    time={node.time}
                     
                   />
                 })

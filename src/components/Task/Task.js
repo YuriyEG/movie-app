@@ -1,10 +1,11 @@
 import React from "react";
+import {formatDistanceToNow} from "date-fns";
 
 import '../Task/Task.css';
 
 
 
-function Task ({value, deleteTask, id, onToggleImportant, onToggleDone, important, done}) {
+function Task ({value, deleteTask, id, onToggleImportant, onToggleDone, important, done, time}) {
 
    
     let taskClass = 'description';
@@ -14,6 +15,9 @@ function Task ({value, deleteTask, id, onToggleImportant, onToggleDone, importan
     if (done) {
       taskClass += ' classDone';
     }
+
+    const distance = formatDistanceToNow(time, {includeSeconds: true})
+    console.log('distance', distance);
     
    
 
@@ -27,7 +31,7 @@ function Task ({value, deleteTask, id, onToggleImportant, onToggleDone, importan
                     onClick={onToggleDone}
                   
                     >{value}</span>
-                    <span className="created">created 17 seconds ago</span>
+                    <span className="created">created {distance} ago</span>
                   </label>
                   <button className="icon icon-edit"></button>
                   <button className="icon icon-destroy" onClick={() => deleteTask(id)}></button>
