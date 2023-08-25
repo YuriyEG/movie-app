@@ -63,8 +63,8 @@
   "lint-staged": {
     "*.js": [
       "npm run lint:fix",
-      "git add",
-      
+      "git add"
+
     ]
   }
 }
