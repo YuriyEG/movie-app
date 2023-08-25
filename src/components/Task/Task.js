@@ -16,15 +16,18 @@ function Task ({value, deleteTask, id, onToggleImportant, onToggleDone, importan
       taskClass += ' classDone';
     }
 
+    let check = document.querySelector('#check');
+    
+
     const distance = formatDistanceToNow(time, {includeSeconds: true})
     console.log('distance', distance);
     
-   
+    
 
     return (
         <li>
                 <div className="view">
-                  <input className="toggle" onChange={onToggleImportant} type="checkbox"/>
+                  <input className="toggle" id='check' onChange={onToggleImportant} type="checkbox"/>
                   <label>
                     <span className={taskClass}
                           

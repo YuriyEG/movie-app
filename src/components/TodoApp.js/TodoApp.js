@@ -19,7 +19,7 @@ function TodoApp () {
     const [active, setActive] = useState(false);
     const [completed, setCompleted] = useState(false);
 
-    const [listMode, setListMode] = useState('All');
+    const [listMode, setListMode] = useState('all');
 
    
 
@@ -107,6 +107,8 @@ function TodoApp () {
               setAll(true);
               setActive(false);
             }
+            setListMode(mode);
+            console.log('listMode:', mode);
 
         })
         console.log(mode, el);

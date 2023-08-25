@@ -11,8 +11,13 @@ function TaskList (props) {
 
             {
                 props.todoList.map( node => {
-                  
-                  let value = node.value;
+
+                  console.log(node, 'отрисовка таски');
+           
+                    
+                  if ( props.listMode === 'all') {
+                    
+                    let value = node.value;
                   return <Task value={value} key = {node.id} deleteTask={props.deleteTask} id={node.id}
                     onToggleDone={() => props.onToggleDone(node.id)}
                     onToggleImportant={() => props.onToggleImportant(node.id)}
@@ -21,6 +26,40 @@ function TaskList (props) {
                     time={node.time}
                     
                   />
+                  }
+
+                  if ( props.listMode === 'completed') {
+                    console.log(node.done, 'completed mode!');
+                    if ( node.done ) {
+                      
+                      let value = node.value;
+                  return <Task value={value} key = {node.id} deleteTask={props.deleteTask} id={node.id}
+                    onToggleDone={() => props.onToggleDone(node.id)}
+                    onToggleImportant={() => props.onToggleImportant(node.id)}
+                    done={node.done}
+                    important={node.important}
+                    time={node.time}
+                    
+                  />
+                    }
+                  }
+
+                  if ( props.listMode === 'active') {
+                    console.log(node.done, 'completed mode!');
+                    if ( !node.done ) {
+                      
+                      let value = node.value;
+                  return <Task value={value} key = {node.id} deleteTask={props.deleteTask} id={node.id}
+                    onToggleDone={() => props.onToggleDone(node.id)}
+                    onToggleImportant={() => props.onToggleImportant(node.id)}
+                    done={node.done}
+                    important={node.important}
+                    time={node.time}
+                    
+                  />
+                    }
+                  }
+                  
                 })
             }
               
