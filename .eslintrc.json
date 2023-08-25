@@ -11,8 +11,7 @@
       "plugin:react/recommended",
       "plugin:prettier/recommended",
       "plugin:import/errors",
-      "plugin:import/warnings",
-      "prettier"
+      "plugin:import/warnings"
     ],
     "parserOptions": {
       "ecmaFeatures": {

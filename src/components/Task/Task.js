@@ -24,7 +24,6 @@ function Task({ value, deleteTask, id, onToggleImportant, onToggleDone, importan
         <label>
           <span className={taskClass} onClick={onToggleDone}>
             {value}
-            {value}
           </span>
           <span className="created">created {distance} ago</span>
         </label>
