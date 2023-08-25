@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react'
 
-import Footer from "../Footer/Footer";
-import NewTaskForm from "../NewTaskForm/NewTaskForm";
-import TaskList from "../TaskList/TaskList";
+import Footer from '../Footer/Footer'
+import NewTaskForm from '../NewTaskForm/NewTaskForm'
+import TaskList from '../TaskList/TaskList'
 
 function TodoApp() {
   const [todoList, setTodoList] = useState([
-    { value: "first", id: 1, important: false, done: false, time: new Date() },
-    { value: "second", id: 2, important: false, done: false, time: new Date() },
+    { value: 'first', id: 1, important: false, done: false, time: new Date() },
+    { value: 'second', id: 2, important: false, done: false, time: new Date() },
   ]);
 
   const [all, setAll] = useState(true)
@@ -41,11 +41,7 @@ function TodoApp() {
     const oldItem = todoList[indx]
     const newItem = { ...oldItem, important: !oldItem.important }
 
-    const newArray = [
-      ...todoList.slice(0, indx),
-      newItem,
-      ...todoList.slice(indx + 1),
-    ];
+    const newArray = [...todoList.slice(0, indx), newItem, ...todoList.slice(indx + 1)]
     setTodoList(newArray);
   }
 
@@ -54,11 +50,7 @@ function TodoApp() {
     const oldItem2 = todoList[indx]
     const newItem2 = { ...oldItem2, done: !oldItem2.done }
 
-    const newArray2 = [
-      ...todoList.slice(0, indx),
-      newItem2,
-      ...todoList.slice(indx + 1),
-    ];
+    const newArray2 = [...todoList.slice(0, indx), newItem2, ...todoList.slice(indx + 1)]
     setTodoList(newArray2);
   }
 
@@ -77,18 +69,18 @@ function TodoApp() {
   const todoCount = todoList.length - doneCount
 
   function setMode(mode, el) {
-    ["active", "all", "completed"].forEach((node) => {
+    ['active', 'all', 'completed'].forEach((node) => {
       if (mode === 'active') {
         setActive(true);
         setAll(false)
         setCompleted(false)
       }
-      if (mode === "completed") {
+      if (mode === 'completed') {
         setCompleted(true);
         setAll(false)
         setActive(false)
       }
-      if (mode === "all") {
+      if (mode === 'all') {
         setCompleted(false);
         setAll(true)
         setActive(false)

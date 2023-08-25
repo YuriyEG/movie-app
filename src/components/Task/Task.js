@@ -1,19 +1,10 @@
 import React from 'react';
-import { formatDistanceToNow } from "date-fns";
+import { formatDistanceToNow } from 'date-fns'
 
-import "../Task/Task.css";
+import '../Task/Task.css'
 
-function Task({
-  value,
-  deleteTask,
-  id,
-  onToggleImportant,
-  onToggleDone,
-  important,
-  done,
-  time,
-}) {
-  let taskClass = "description";
+function Task({ value, deleteTask, id, onToggleImportant, onToggleDone, important, done, time }) {
+  let taskClass = 'description'
   if (important) {
     taskClass += ' classImportant';
   }
@@ -29,12 +20,7 @@ function Task({
   return (
     <li>
       <div className="view">
-        <input
-          className="toggle"
-          id="check"
-          onChange={onToggleImportant}
-          type="checkbox"
-        />
+        <input className="toggle" id="check" onChange={onToggleImportant} type="checkbox" />
         <label>
           <span className={taskClass} onClick={onToggleDone}>
             {value}
@@ -43,10 +29,7 @@ function Task({
           <span className="created">created {distance} ago</span>
         </label>
         <button className="icon icon-edit"></button>
-        <button
-          className="icon icon-destroy"
-          onClick={() => deleteTask(id)}
-        ></button>
+        <button className="icon icon-destroy" onClick={() => deleteTask(id)}></button>
       </div>
     </li>
   )

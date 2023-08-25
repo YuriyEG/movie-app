@@ -1,12 +1,12 @@
 import React from 'react';
 
-import Task from "../Task/Task.js";
+import Task from '../Task/Task.js'
 
 function TaskList(props) {
   return (
     <ul className="todo-list">
       {props.todoList.map((node) => {
-        console.log(node, "отрисовка таски");
+        console.log(node, 'отрисовка таски')
 
         if (props.listMode === 'all') {
           let value = node.value;
@@ -25,8 +25,8 @@ function TaskList(props) {
           )
         }
 
-        if (props.listMode === "completed") {
-          console.log(node.done, "completed mode!");
+        if (props.listMode === 'completed') {
+          console.log(node.done, 'completed mode!')
           if (node.done) {
             let value = node.value;
             return (
@@ -46,7 +46,7 @@ function TaskList(props) {
         }
 
         if (props.listMode === 'active') {
-          console.log(node.done, "completed mode!");
+          console.log(node.done, 'completed mode!')
           if (!node.done) {
             let value = node.value;
             return (
