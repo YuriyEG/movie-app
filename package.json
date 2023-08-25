@@ -14,6 +14,7 @@
   "scripts": {
     "lint": "eslint ./src",
     "lint:fix": "eslint ./src --fix --color",
+    "format": "eslint ./src --format",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
