@@ -1,10 +1,10 @@
 import React from 'react';
-import { formatDistanceToNow } from 'date-fns'
+import { formatDistanceToNow } from 'date-fns';
 
-import '../Task/Task.css'
+import './Task.css';
 
 function Task({ value, deleteTask, id, onToggleImportant, onToggleDone, important, done, time }) {
-  let taskClass = 'description'
+  let taskClass = 'description';
   if (important) {
     taskClass += ' classImportant';
   }
@@ -12,10 +12,10 @@ function Task({ value, deleteTask, id, onToggleImportant, onToggleDone, importan
     taskClass += ' classDone';
   }
 
-  let check = document.querySelector('#check');
+  const check = document.querySelector('#check');
 
   const distance = formatDistanceToNow(time, { includeSeconds: true });
-  console.log('distance', distance)
+  console.log('distance', distance);
 
   return (
     <li>
@@ -32,7 +32,7 @@ function Task({ value, deleteTask, id, onToggleImportant, onToggleDone, importan
         <button className="icon icon-destroy" onClick={() => deleteTask(id)}></button>
       </div>
     </li>
-  )
+  );
 }
 
-export default Task
+export default Task;

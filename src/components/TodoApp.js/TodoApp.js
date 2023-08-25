@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import Footer from '../Footer/Footer'
+import Footer from '../Footer/Footer';
 import NewTaskForm from '../NewTaskForm/NewTaskForm';
 import TaskList from '../TaskList/TaskList';
 
@@ -26,36 +26,36 @@ function TodoApp() {
         time: new Date(),
       };
       e.target.value = '';
-      const newTodoList = [newTask, ...todoList]
-      setTodoList(newTodoList)
+      const newTodoList = [newTask, ...todoList];
+      setTodoList(newTodoList);
     }
   }
 
   function deleteTask(id) {
-    const filteredList = [...todoList].filter((el) => el.id !== id)
+    const filteredList = [...todoList].filter((el) => el.id !== id);
     setTodoList(filteredList);
   }
 
   function onToggleImportant(id) {
     const indx = todoList.findIndex((el) => el.id === id);
-    const oldItem = todoList[indx]
-    const newItem = { ...oldItem, important: !oldItem.important }
+    const oldItem = todoList[indx];
+    const newItem = { ...oldItem, important: !oldItem.important };
 
-    const newArray = [...todoList.slice(0, indx), newItem, ...todoList.slice(indx + 1)]
+    const newArray = [...todoList.slice(0, indx), newItem, ...todoList.slice(indx + 1)];
     setTodoList(newArray);
   }
 
   function onToggleDone(id) {
     const indx = todoList.findIndex((el) => el.id === id);
-    const oldItem2 = todoList[indx]
-    const newItem2 = { ...oldItem2, done: !oldItem2.done }
+    const oldItem2 = todoList[indx];
+    const newItem2 = { ...oldItem2, done: !oldItem2.done };
 
-    const newArray2 = [...todoList.slice(0, indx), newItem2, ...todoList.slice(indx + 1)]
+    const newArray2 = [...todoList.slice(0, indx), newItem2, ...todoList.slice(indx + 1)];
     setTodoList(newArray2);
   }
 
   function clearCompleted() {
-    let newArray = [];
+    const newArray = [];
     [...todoList].forEach((node) => {
       console.log(node);
       if (node.done !== true) {
@@ -66,27 +66,27 @@ function TodoApp() {
   }
 
   const doneCount = todoList.filter((el) => el.done).length;
-  const todoCount = todoList.length - doneCount
+  const todoCount = todoList.length - doneCount;
 
   function setMode(mode, el) {
     ['active', 'all', 'completed'].forEach((node) => {
       if (mode === 'active') {
         setActive(true);
-        setAll(false)
-        setCompleted(false)
+        setAll(false);
+        setCompleted(false);
       }
       if (mode === 'completed') {
         setCompleted(true);
-        setAll(false)
-        setActive(false)
+        setAll(false);
+        setActive(false);
       }
       if (mode === 'all') {
         setCompleted(false);
-        setAll(true)
-        setActive(false)
+        setAll(true);
+        setActive(false);
       }
       setListMode(mode);
-      console.log('listMode:', mode)
+      console.log('listMode:', mode);
     });
     console.log(mode, el);
   }

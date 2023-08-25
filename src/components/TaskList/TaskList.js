@@ -1,15 +1,15 @@
 import React from 'react';
 
-import Task from '../Task/Task.js'
+import Task from '../Task/Task.js';
 
 function TaskList(props) {
   return (
     <ul className="todo-list">
       {props.todoList.map((node) => {
-        console.log(node, 'отрисовка таски')
+        console.log(node, 'отрисовка таски');
 
         if (props.listMode === 'all') {
-          let value = node.value;
+          const { value } = node;
           return (
             <Task
               value={value}
@@ -22,13 +22,13 @@ function TaskList(props) {
               important={node.important}
               time={node.time}
             />
-          )
+          );
         }
 
         if (props.listMode === 'completed') {
-          console.log(node.done, 'completed mode!')
+          console.log(node.done, 'completed mode!');
           if (node.done) {
-            let value = node.value;
+            const { value } = node;
             return (
               <Task
                 value={value}
@@ -41,14 +41,14 @@ function TaskList(props) {
                 important={node.important}
                 time={node.time}
               />
-            )
+            );
           }
         }
 
         if (props.listMode === 'active') {
-          console.log(node.done, 'completed mode!')
+          console.log(node.done, 'completed mode!');
           if (!node.done) {
-            let value = node.value;
+            const { value } = node;
             return (
               <Task
                 value={value}
@@ -61,7 +61,7 @@ function TaskList(props) {
                 important={node.important}
                 time={node.time}
               />
-            )
+            );
           }
         }
       })}
@@ -104,4 +104,4 @@ function TaskList(props) {
   );
 }
 
-export default TaskList
+export default TaskList;
