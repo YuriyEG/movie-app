@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 
 import Footer from "../Footer/Footer";
@@ -14,6 +14,14 @@ function TodoApp () {
       {value: 'first', id: 1, important: false, done: false, time: new Date()},
      {value: 'second', id: 2, important: false, done: false, time: new Date()}
     ]);
+
+    const [ all, setAll] = useState(true);
+    const [active, setActive] = useState(false);
+    const [completed, setCompleted] = useState(false);
+
+    const [listMode, setListMode] = useState('All');
+
+   
 
     
 
@@ -65,12 +73,44 @@ function TodoApp () {
       
     }
 
+    function clearCompleted () {
+
+      let newArray = [];
+      [...todoList].forEach( node => {
+        console.log(node);
+        if (node.done !== true) {
+          newArray.push(node);
+        }
+      })
+       setTodoList(newArray);
+    }
+
     const doneCount = todoList.filter( (el) => el.done).length;
     const todoCount = todoList.length - doneCount;
 
+    function setMode(mode, el) {
+        
+        ['active', 'all','completed'].forEach( node => {
+          
+            if (mode === 'active') {
+              setActive(true);
+              setAll(false);
+              setCompleted(false);
+            }
+            if (mode === 'completed') {
+              setCompleted(true);
+              setAll(false);
+              setActive(false);
+            }
+            if (mode === 'all') {
+              setCompleted(false);
+              setAll(true);
+              setActive(false);
+            }
 
-
-    console.log(todoList);
+        })
+        console.log(mode, el);
+    }
 
     return (
       
@@ -84,10 +124,17 @@ function TodoApp () {
   
                     onToggleImportant={onToggleImportant}
                     onToggleDone={onToggleDone}
+                    listMode={listMode}
                     
                     />
           <Footer
             todoCount={todoCount}
+            clearCompleted={clearCompleted}
+            setMode={setMode}
+            all={all}
+            active={active}
+            completed={completed}
+            setListMode={setListMode}
           />
         </section>
 

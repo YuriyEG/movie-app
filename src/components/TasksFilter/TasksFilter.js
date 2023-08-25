@@ -1,19 +1,22 @@
 import React from "react";
+import { useState } from "react";
 
 
-function TasksFilter() {
+function TasksFilter({setMode, all, active, completed}) {
+
+    
 
     return (
 
         <ul className="filters">
           <li>
-            <button className="selected">All</button>
+            <button className={ all ? 'selected': 'none'} onClick={(e) => setMode('all', e.target)}>All</button>
           </li>
           <li>
-            <button>Active</button>
+            <button className={ active ? 'selected': 'none'} onClick={(e) => setMode('active', e.target)}>Active</button>
           </li>
           <li>
-            <button>Completed</button>
+            <button className={ completed ? 'selected': 'none'} onClick={(e) => setMode('completed', e.target)}>Completed</button>
           </li>
         </ul>
     )
