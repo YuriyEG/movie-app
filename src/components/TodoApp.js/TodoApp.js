@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 
 import Footer from '../Footer/Footer'
-import NewTaskForm from '../NewTaskForm/NewTaskForm'
-import TaskList from '../TaskList/TaskList'
+import NewTaskForm from '../NewTaskForm/NewTaskForm';
+import TaskList from '../TaskList/TaskList';
 
 function TodoApp() {
   const [todoList, setTodoList] = useState([
@@ -10,9 +10,9 @@ function TodoApp() {
     { value: 'second', id: 2, important: false, done: false, time: new Date() },
   ]);
 
-  const [all, setAll] = useState(true)
-  const [active, setActive] = useState(false)
-  const [completed, setCompleted] = useState(false)
+  const [all, setAll] = useState(true);
+  const [active, setActive] = useState(false);
+  const [completed, setCompleted] = useState(false);
 
   const [listMode, setListMode] = useState('all');
 
