@@ -1,26 +1,23 @@
-import React from "react";
+import React from 'react'
 
+import TasksFilter from '../TasksFilter/TasksFilter.js'
 
-import TasksFilter from '../TasksFilter/TasksFilter.js';
-
-
-
-class Footer extends React.Component  {
-
+class Footer extends React.Component {
   render() {
-    
     return (
-        <footer className="footer">
+      <footer className="footer">
         <span className="todo-count">{this.props.todoCount} items left</span>
-        <TasksFilter 
+        <TasksFilter
           completed={this.props.completed}
           active={this.props.active}
-          all={this.props.all} setMode={this.props.setMode}/>
-        <button className="clear-completed" onClick={this.props.clearCompleted}>Clear completed</button>
+          all={this.props.all}
+          setMode={this.props.setMode}
+        />
+        <button className="clear-completed" onClick={this.props.clearCompleted}>
+          Clear completed
+        </button>
       </footer>
-      
     )
-    
   }
 }
 

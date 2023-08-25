@@ -1,69 +1,72 @@
-import React from "react";
+import React from 'react';
 
-import Task from '../Task/Task.js';
+import Task from "../Task/Task.js";
 
+function TaskList(props) {
+  return (
+    <ul className="todo-list">
+      {props.todoList.map((node) => {
+        console.log(node, "отрисовка таски");
 
-function TaskList (props) {
+        if (props.listMode === 'all') {
+          let value = node.value;
+          return (
+            <Task
+              value={value}
+              key={node.id}
+              deleteTask={props.deleteTask}
+              id={node.id}
+              onToggleDone={() => props.onToggleDone(node.id)}
+              onToggleImportant={() => props.onToggleImportant(node.id)}
+              done={node.done}
+              important={node.important}
+              time={node.time}
+            />
+          )
+        }
 
-    return (
+        if (props.listMode === "completed") {
+          console.log(node.done, "completed mode!");
+          if (node.done) {
+            let value = node.value;
+            return (
+              <Task
+                value={value}
+                key={node.id}
+                deleteTask={props.deleteTask}
+                id={node.id}
+                onToggleDone={() => props.onToggleDone(node.id)}
+                onToggleImportant={() => props.onToggleImportant(node.id)}
+                done={node.done}
+                important={node.important}
+                time={node.time}
+              />
+            )
+          }
+        }
 
-        <ul className="todo-list">
+        if (props.listMode === 'active') {
+          console.log(node.done, "completed mode!");
+          if (!node.done) {
+            let value = node.value;
+            return (
+              <Task
+                value={value}
+                key={node.id}
+                deleteTask={props.deleteTask}
+                id={node.id}
+                onToggleDone={() => props.onToggleDone(node.id)}
+                onToggleImportant={() => props.onToggleImportant(node.id)}
+                done={node.done}
+                important={node.important}
+                time={node.time}
+              />
+            )
+          }
+        }
+      })}
 
-            {
-                props.todoList.map( node => {
-
-                  console.log(node, 'отрисовка таски');
-           
-                    
-                  if ( props.listMode === 'all') {
-                    
-                    let value = node.value;
-                  return <Task value={value} key = {node.id} deleteTask={props.deleteTask} id={node.id}
-                    onToggleDone={() => props.onToggleDone(node.id)}
-                    onToggleImportant={() => props.onToggleImportant(node.id)}
-                    done={node.done}
-                    important={node.important}
-                    time={node.time}
-                    
-                  />
-                  }
-
-                  if ( props.listMode === 'completed') {
-                    console.log(node.done, 'completed mode!');
-                    if ( node.done ) {
-                      
-                      let value = node.value;
-                  return <Task value={value} key = {node.id} deleteTask={props.deleteTask} id={node.id}
-                    onToggleDone={() => props.onToggleDone(node.id)}
-                    onToggleImportant={() => props.onToggleImportant(node.id)}
-                    done={node.done}
-                    important={node.important}
-                    time={node.time}
-                    
-                  />
-                    }
-                  }
-
-                  if ( props.listMode === 'active') {
-                    console.log(node.done, 'completed mode!');
-                    if ( !node.done ) {
-                      
-                      let value = node.value;
-                  return <Task value={value} key = {node.id} deleteTask={props.deleteTask} id={node.id}
-                    onToggleDone={() => props.onToggleDone(node.id)}
-                    onToggleImportant={() => props.onToggleImportant(node.id)}
-                    done={node.done}
-                    important={node.important}
-                    time={node.time}
-                    
-                  />
-                    }
-                  }
-                  
-                })
-            }
-              
-              {/* <li class="completed">
+      {/* <li class="completed">
                 <div class="view">
                   <input class="toggle" type="checkbox">
                   <label>
@@ -97,10 +100,8 @@ function TaskList (props) {
                   <button class="icon icon-destroy"></button>
                 </div>
               </li> */}
-            </ul>
-
-    )
+    </ul>
+  );
 }
 
-
-export default TaskList;
+export default TaskList
