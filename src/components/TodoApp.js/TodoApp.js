@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 import Footer from '../Footer/Footer';
 import NewTaskForm from '../NewTaskForm/NewTaskForm';
@@ -57,7 +57,6 @@ function TodoApp() {
   function clearCompleted() {
     const newArray = [];
     [...todoList].forEach((node) => {
-      console.log(node);
       if (node.done !== true) {
         newArray.push(node);
       }
@@ -68,8 +67,8 @@ function TodoApp() {
   const doneCount = todoList.filter((el) => el.done).length;
   const todoCount = todoList.length - doneCount;
 
-  function setMode(mode, el) {
-    ['active', 'all', 'completed'].forEach((node) => {
+  function setMode(mode) {
+    ['active', 'all', 'completed'].forEach(() => {
       if (mode === 'active') {
         setActive(true);
         setAll(false);
@@ -86,9 +85,7 @@ function TodoApp() {
         setActive(false);
       }
       setListMode(mode);
-      console.log('listMode:', mode);
     });
-    console.log(mode, el);
   }
 
   return (

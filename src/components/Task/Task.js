@@ -12,10 +12,7 @@ function Task({ value, deleteTask, id, onToggleImportant, onToggleDone, importan
     taskClass += ' classDone';
   }
 
-  const check = document.querySelector('#check');
-
   const distance = formatDistanceToNow(time, { includeSeconds: true });
-  console.log('distance', distance);
 
   return (
     <li>

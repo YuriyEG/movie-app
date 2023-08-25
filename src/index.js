@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
-import TodoApp from './components/TodoApp.js/TodoApp.js';
+import TodoApp from './components/TodoApp.js/TodoApp';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 

@@ -1,5 +1,3 @@
-import React, { useState } from 'react';
-
 function TasksFilter({ setMode, all, active, completed }) {
   return (
     <ul className="filters">

@@ -1,13 +1,11 @@
 import React from 'react';
 
-import Task from '../Task/Task.js';
+import Task from '../Task/Task';
 
 function TaskList(props) {
   return (
     <ul className="todo-list">
       {props.todoList.map((node) => {
-        console.log(node, 'отрисовка таски');
-
         if (props.listMode === 'all') {
           const { value } = node;
           return (
@@ -26,7 +24,6 @@ function TaskList(props) {
         }
 
         if (props.listMode === 'completed') {
-          console.log(node.done, 'completed mode!');
           if (node.done) {
             const { value } = node;
             return (
@@ -46,7 +43,6 @@ function TaskList(props) {
         }
 
         if (props.listMode === 'active') {
-          console.log(node.done, 'completed mode!');
           if (!node.done) {
             const { value } = node;
             return (
@@ -65,41 +61,6 @@ function TaskList(props) {
           }
         }
       })}
-
-      {/* <li class="completed">
-                <div class="view">
-                  <input class="toggle" type="checkbox">
-                  <label>
-                    <span class="description">Completed task</span>
-                    <span class="created">created 17 seconds ago</span>
-                  </label>
-                  <button class="icon icon-edit"></button>
-                  <button class="icon icon-destroy"></button>
-                </div>
-              </li>
-              <li class="editing">
-                <div class="view">
-                  <input class="toggle" type="checkbox">
-                  <label>
-                    <span class="description">Editing task</span>
-                    <span class="created">created 5 minutes ago</span>
-                  </label>
-                  <button class="icon icon-edit"></button>
-                  <button class="icon icon-destroy"></button>
-                </div>
-                <input type="text" class="edit" value="Editing task">
-              </li>
-              <li>
-                <div class="view">
-                  <input class="toggle" type="checkbox">
-                  <label>
-                    <span class="description">Active task</span>
-                    <span class="created">created 5 minutes ago</span>
-                  </label>
-                  <button class="icon icon-edit"></button>
-                  <button class="icon icon-destroy"></button>
-                </div>
-              </li> */}
     </ul>
   );
 }
