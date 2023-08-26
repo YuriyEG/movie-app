@@ -3,7 +3,6 @@ import React from 'react';
 import Task from '../Task/Task';
 
 function TaskList(props) {
-
   return (
     <ul className="todo-list">
       {props.todoList.map((node) => {
