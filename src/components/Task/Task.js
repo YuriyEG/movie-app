@@ -1,5 +1,6 @@
 import React from 'react';
 import { formatDistanceToNow } from 'date-fns';
+import PropTypes from 'prop-types';
 
 import './Task.css';
 
@@ -19,7 +20,12 @@ function Task({ value, deleteTask, id, onToggleImportant, onToggleDone, importan
       <div className="view">
         <input className="toggle" id="check" onChange={onToggleImportant} type="checkbox" />
         <label>
-          <span className={taskClass} onClick={onToggleDone}>
+
+
+
+
+
+                <span className={taskClass} onClick={onToggleDone}>
             {value}
           </span>
           <span className="created">created {distance} ago</span>
