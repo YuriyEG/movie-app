@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 import Footer from '../Footer/Footer';
 import NewTaskForm from '../NewTaskForm/NewTaskForm';
@@ -104,11 +104,7 @@ class TodoApp extends React.Component {
         this.setState({ completed: true });
         this.setState({ all: false });
         this.setState({ active: false });
-                }
-
-
-
-
+      }
 
       if (mode === 'all') {
         this.setState({ completed: false });

@@ -7,9 +7,7 @@ function TaskList(props) {
     <ul className="todo-list">
       {props.todoList.map((node) => {
         return (
-                <Task
-
-
+          <Task
             key={node.id}
             deleteTask={props.deleteTask}
             id={node.id}
