@@ -9,13 +9,17 @@ function Task({ value, deleteTask, setTodoList, id, onToggleImportant, onToggleD
   const [editStatus, setEditStatus] = useState(false);
   const [editValue, setEditValue] = useState(value);
 
-  let taskClass = 'description';
-  if (important) {
-    taskClass += ' classImportant';
+  let taskClass = '';
+  if (important && done) {
+    taskClass = 'description classImportant classDone';
+  } else if (important && !done) {
+    taskClass = 'description classImportant';
+  } else if (!important && !done) {
+    taskClass = 'description';
+  } else if (!important && done) {
+    taskClass = 'desctiption classDone';
   }
-  if (done) {
-    taskClass += ' classDone';
-  }
+  console.log(taskClass);
 
   const initialEdit = () => {
     setEditStatus(true);

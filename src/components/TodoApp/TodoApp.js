@@ -79,7 +79,7 @@ class TodoApp extends React.Component {
 
       const newArray = [...this.state.todoList.slice(0, indx), newItem, ...this.state.todoList.slice(indx + 1)];
       this.setState({
-        todolist: newArray,
+        todoList: newArray,
       });
     };
 
