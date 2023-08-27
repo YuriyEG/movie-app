@@ -1,6 +1,6 @@
-//https://react-todolist-arente2al-yuriyeg.vercel.app/
+// react-todolist-hc21a6sq3-yuriyeg.vercel.app
 
-//https://github.com/YuriyEG/react-todolist.git
+// https://github.com/YuriyEG/react-todolist.git
 
 
 
