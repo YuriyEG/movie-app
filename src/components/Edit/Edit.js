@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Edit = () => {
+const Edit = ({ editValue, setValue, saveTodo }) => {
   return (
     <li className="editing">
       <div className="view">
@@ -12,7 +12,13 @@ const Edit = () => {
         <button className="icon icon-edit"></button>
         <button className="icon icon-destroy"></button>
       </div>
-      <input type="text" className="edit" value="Editing task" />
+      <input
+        type="text"
+        value={editValue}
+        onKeyDown={(e) => saveTodo(e)}
+        onChange={(e) => setValue(e)}
+        className="edit"
+      />
     </li>
   );
 };

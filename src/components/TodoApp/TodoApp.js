@@ -14,8 +14,8 @@ class TodoApp extends React.Component {
       completed: false,
       listMode: 'all',
       todoList: [
-        { value: 'first', id: 1, important: false, done: false, time: new Date() },
-        { value: 'second', id: 2, important: false, done: false, time: new Date() },
+        { value: 'first', id: Math.random(), important: false, done: false, time: new Date() },
+        { value: 'second', id: Math.random(), important: false, done: false, time: new Date() },
       ],
     };
   }
@@ -125,6 +125,18 @@ class TodoApp extends React.Component {
       this.setState({ todoList: newArray });
     };
 
+    const setTodoList = (id, editValue) => {
+      const indx = this.state.todoList.findIndex((el) => el.id === id);
+      const node = this.state.todoList[indx];
+      const editedTask = {
+        ...node,
+        value: editValue,
+        time: new Date(),
+      };
+      const newTodoList = [...this.state.todoList.slice(0, indx), editedTask, ...this.state.todoList.slice(indx + 1)];
+      this.setState({ todoList: newTodoList });
+    };
+
     const doneCount = this.state.todoList.filter((el) => el.done).length;
     const todoCount = this.state.todoList.length - doneCount;
     return (
@@ -137,6 +149,7 @@ class TodoApp extends React.Component {
             onToggleImportant={onToggleImportant}
             onToggleDone={onToggleDone}
             listMode={this.state.listMode}
+            setTodoList={setTodoList}
           />
           <Footer
             todoCount={todoCount}

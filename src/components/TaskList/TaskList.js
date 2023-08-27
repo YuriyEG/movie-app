@@ -17,6 +17,9 @@ function TaskList(props) {
             important={node.important}
             time={node.time}
             value={node.value}
+            node={node}
+            todoList={props.todoList}
+            setTodoList={props.setTodoList}
           />
         );
       })}
