@@ -11,7 +11,6 @@ class TodoApp extends React.Component {
       all: true,
       active: false,
       completed: false,
-
       listMode: 'all',
       todoList: [
         { value: 'first', id: 1, important: false, done: false, time: new Date() },
@@ -21,6 +20,14 @@ class TodoApp extends React.Component {
   }
 
   render() {
+    let filteredTasks = this.state.todoList;
+    if (this.state.listMode === 'active') {
+      filteredTasks = this.state.todoList.filter((node) => node.done === false);
+    }
+    if (this.state.listMode === 'completed') {
+      filteredTasks = this.state.todoList.filter((node) => node.done === true);
+    }
+
     const createTask = (e) => {
       if (e.keyCode === 13 && e.target.value.replace(/ /g, '').length) {
         const newTask = {
@@ -105,7 +112,7 @@ class TodoApp extends React.Component {
         <section className="main">
           <NewTaskForm createTask={createTask} />
           <TaskList
-            todoList={this.state.todoList}
+            todoList={filteredTasks}
             deleteTask={deleteTask}
             onToggleImportant={onToggleImportant}
             onToggleDone={onToggleDone}
