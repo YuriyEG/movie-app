@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { formatDistanceToNow } from 'date-fns';
-
 import './Task.css';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 import Edit from '../Edit/Edit';
 
@@ -65,5 +64,29 @@ function Task({ value, deleteTask, setTodoList, id, onToggleImportant, onToggleD
 
   return <div>{editStatus ? <Edit saveTodo={saveTodo} editValue={editValue} setValue={setValue} /> : todoItem}</div>;
 }
+
+Task.defaultProps = {
+  value: '',
+  deleteTask: () => {},
+  setTodoList: () => {},
+  id: '9999999',
+  onToggleImportant: () => {},
+  onToggleDone: () => {},
+  important: 'false',
+  done: 'false',
+  time: {},
+};
+
+Task.PropTypes = {
+  value: PropTypes.string,
+  deletedTask: PropTypes.func,
+  setTodoList: PropTypes.func,
+  id: PropTypes.string,
+  onToggleImportant: PropTypes.func,
+  onToggleDone: PropTypes.func,
+  important: PropTypes.string,
+  done: PropTypes.bool,
+  time: PropTypes.object,
+};
 
 export default Task;

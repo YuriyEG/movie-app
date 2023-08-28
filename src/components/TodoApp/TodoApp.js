@@ -1,5 +1,5 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 import Footer from '../Footer/Footer';
 import NewTaskForm from '../NewTaskForm/NewTaskForm';
@@ -21,24 +21,6 @@ class TodoApp extends React.Component {
       ],
     };
   }
-
-  // App.defaultProps = {
-  //   todos: [],
-  //   deleteItem: () => {},
-  //   editItem: () => {},
-  //   filter: 'all',
-  //   filterChange: () => {},
-  //   todoCount: 0,
-  // };
-
-  // App.propTypes = {
-  //   todos: PropTypes.array,
-  //   editItem: PropTypes.func,
-  //   deleteItem: PropTypes.func,
-  //   filter: PropTypes.string,
-  //   filterChange: PropTypes.func,
-  //   todoCount: PropTypes.number,
-  // };
 
   render() {
     let filteredTasks = this.state.todoList;
@@ -166,5 +148,35 @@ class TodoApp extends React.Component {
     );
   }
 }
+
+TodoApp.defaultProps = {
+  all: false,
+  active: false,
+  completed: false,
+  listMode: '',
+  todoList: [],
+  createTask: () => {},
+  deleteTask: () => {},
+  onToggleDone: () => {},
+  onToggleImportant: () => {},
+  setListMode: () => {},
+  clearCompleted: () => {},
+  setTodoList: () => {},
+};
+
+TodoApp.PropTypes = {
+  all: PropTypes.bool.isRequired,
+  active: PropTypes.bool.isRequired,
+  completed: PropTypes.isRequired,
+  listMode: PropTypes.string.isRequired,
+  todoList: PropTypes.arrayOf(PropTypes.object).isRequired,
+  createTask: PropTypes.func.isRequired,
+  deleteTask: PropTypes.func.isRequired,
+  onToggleDone: PropTypes.func.isRequired,
+  onToggleImportant: PropTypes.func.isRequired,
+  setListMode: PropTypes.func.isRequired,
+  clearCompleted: PropTypes.func.isRequired,
+  setTodoList: PropTypes.func.isRequired,
+};
 
 export default TodoApp;

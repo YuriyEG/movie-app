@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import Task from '../Task/Task';
 
@@ -28,5 +29,35 @@ function TaskList(props) {
     </ul>
   );
 }
+
+TaskList.defaultProps = {
+  key: 0,
+  deleteTask: () => {},
+  id: 0,
+  onToggleDone: () => {},
+  onToggleImportant: () => {},
+  done: false,
+  important: false,
+  time: {},
+  value: 'default value',
+  todoList: [],
+  node: {},
+  setTodoList: () => {},
+};
+
+TaskList.PropTypes = {
+  key: PropTypes.number,
+  deleteTask: PropTypes.func,
+  id: PropTypes.number,
+  onToggleDone: PropTypes.func,
+  onToggleImportant: PropTypes.func,
+  done: PropTypes.bool,
+  important: PropTypes.bool,
+  time: PropTypes.object,
+  value: PropTypes.string,
+  todoList: PropTypes.array,
+  node: PropTypes.object,
+  setTodoList: PropTypes.array,
+};
 
 export default TaskList;

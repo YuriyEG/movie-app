@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import './Edit.css';
 
@@ -23,6 +24,18 @@ const Edit = ({ editValue, setValue, saveTodo }) => {
       />
     </li>
   );
+};
+
+Edit.defaultProps = {
+  editValue: '',
+  setValue: '',
+  saveTodo: () => {},
+};
+
+Edit.PropTypes = {
+  editValue: PropTypes.string,
+  setValue: PropTypes.string,
+  saveTodo: PropTypes.func,
 };
 
 export default Edit;

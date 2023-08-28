@@ -1,5 +1,6 @@
 import React from 'react';
 import './NewTaskForm.css';
+import PropTypes from 'prop-types';
 
 function NewTaskForm({ createTask }) {
   return (
@@ -9,5 +10,13 @@ function NewTaskForm({ createTask }) {
     </header>
   );
 }
+
+NewTaskForm.defaultProps = {
+  createTask: () => {},
+};
+
+NewTaskForm.PropTypes = {
+  createTask: PropTypes.func,
+};
 
 export default NewTaskForm;

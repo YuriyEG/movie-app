@@ -1,5 +1,5 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
 import './TasksFilter.css';
 
 function TasksFilter({ setMode, all, active, completed }) {
@@ -23,5 +23,19 @@ function TasksFilter({ setMode, all, active, completed }) {
     </ul>
   );
 }
+
+TasksFilter.defaultProps = {
+  setMode: 'default string',
+  all: false,
+  active: false,
+  completed: false,
+};
+
+TasksFilter.PropTypes = {
+  setMode: PropTypes.string,
+  all: PropTypes.bool,
+  active: PropTypes.bool,
+  completed: PropTypes.bool,
+};
 
 export default TasksFilter;
