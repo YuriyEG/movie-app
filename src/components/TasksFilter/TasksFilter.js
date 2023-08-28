@@ -1,3 +1,7 @@
+import React from 'react';
+
+import './TasksFilter.css';
+
 function TasksFilter({ setMode, all, active, completed }) {
   return (
     <ul className="filters">

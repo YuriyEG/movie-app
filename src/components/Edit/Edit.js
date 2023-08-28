@@ -1,5 +1,7 @@
 import React from 'react';
 
+import './Edit.css';
+
 const Edit = ({ editValue, setValue, saveTodo }) => {
   return (
     <li className="editing">

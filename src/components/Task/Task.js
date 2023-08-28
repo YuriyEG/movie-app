@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { formatDistanceToNow } from 'date-fns';
-// import PropTypes from 'prop-types';
 
 import './Task.css';
+// import PropTypes from 'prop-types';
+
 import Edit from '../Edit/Edit';
 
 function Task({ value, deleteTask, setTodoList, id, onToggleImportant, onToggleDone, important, done, time }) {
@@ -11,9 +12,13 @@ function Task({ value, deleteTask, setTodoList, id, onToggleImportant, onToggleD
 
   let taskClass = '';
   if (done) {
-    taskClass = 'description classDone';
+    taskClass = 'classDone description';
   } else {
     taskClass = 'description';
+  }
+
+  if (important) {
+    taskClass += ' classImportant';
   }
 
   let checkClass = '';

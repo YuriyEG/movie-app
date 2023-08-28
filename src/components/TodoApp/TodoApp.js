@@ -5,6 +5,8 @@ import Footer from '../Footer/Footer';
 import NewTaskForm from '../NewTaskForm/NewTaskForm';
 import TaskList from '../TaskList/TaskList';
 
+import './TodoApp.css';
+
 class TodoApp extends React.Component {
   constructor() {
     super();
