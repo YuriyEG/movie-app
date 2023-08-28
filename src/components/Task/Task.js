@@ -10,16 +10,18 @@ function Task({ value, deleteTask, setTodoList, id, onToggleImportant, onToggleD
   const [editValue, setEditValue] = useState(value);
 
   let taskClass = '';
-  if (important && done) {
-    taskClass = 'description classImportant classDone';
-  } else if (important && !done) {
-    taskClass = 'description classImportant';
-  } else if (!important && !done) {
+  if (done) {
+    taskClass = 'description classDone';
+  } else {
     taskClass = 'description';
-  } else if (!important && done) {
-    taskClass = 'desctiption classDone';
   }
-  console.log(taskClass);
+
+  let checkClass = '';
+  if (important) {
+    checkClass = 'checkedImageBase checkedImage';
+  } else {
+    checkClass = 'checkedImageBase uncheckedImage';
+  }
 
   const initialEdit = () => {
     setEditStatus(true);
@@ -42,7 +44,7 @@ function Task({ value, deleteTask, setTodoList, id, onToggleImportant, onToggleD
     <div>
       <li>
         <div className="view">
-          <input className="toggle" id="check" onChange={onToggleImportant} type="checkbox" />
+          <div className={checkClass} onClick={onToggleImportant}></div>
           <label>
             <span className={taskClass} onClick={onToggleDone}>
               {value}
