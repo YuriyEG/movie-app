@@ -1,0 +1,129 @@
+@font-face {
+    font-family: "InterUI";
+    src: url("./Inter-Regular.ttf");
+  }
+
+/* div, span {
+    border: 0.5px solid black;
+} */
+
+.card {
+
+    width: 454px;
+    height: 280px;
+    display: inline-flex;
+    box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.15);
+    margin-top: 34px;
+    margin-right: 34px;
+
+}
+
+.card:nth-child(2n) {
+    margin-right: 0;
+}
+
+.card__picture {
+
+    width: 182px;
+    height: 280px;
+    background-image: url('./picture.jpg');
+
+
+}
+
+.card__info {
+
+ 
+    width: 272px;
+    height: 280px;
+    display: flex;
+    flex-direction: column;
+}
+
+.card__header {
+
+    width: 272px;
+    height: 36px;
+    padding-top: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    
+    
+}
+
+.card__title {
+
+    font-size: 20px;
+    line-height: 28px;
+    margin-left: 20px;
+    font-family: InterUI, Arial, Helvetica, sans-serif;
+
+}
+
+.card__rating {
+    display: inline-block;
+    width: 36px;
+    height: 36px;
+    margin-right: 8px;
+    box-sizing: border-box;
+    border-radius: 50%;
+    margin-top: -2px;
+    border: 3px solid rgba(233, 209, 0, 1);
+    font-size: 12px;
+    line-height: 30px;
+    text-align: center;
+    font-family: InterUI, Arial, Helvetica, sans-serif;
+}
+
+.card__date {
+    display: inline-block;
+    height: 22px;
+    font-size: 12px;
+    line-height: 22px;
+    font-family: InterUI, Arial, Helvetica, sans-serif;
+    color: rgba(130, 126, 126, 1);
+    margin-left: 20px;
+
+}
+
+.card__genres {
+    display: flex;
+    flex-direction: row;
+    width: 70%;
+    height: 20px;
+
+    margin-top: 4px;
+    margin-left: 20px;
+    
+}
+.card__genres-item {
+    display: inline-block;
+    height: 15px;
+    width: auto;
+    border: 1px solid rgba(217, 217, 217, 1);
+    border-radius: 2px;
+    margin-right: 8px;
+    font-size: 12px;
+    line-height: 15px;
+    font-family: InterUI, Arial, Helvetica, sans-serif;
+    color: rgba(0, 0, 0, 0.65);
+    padding: 1px 4px 1px  4px;
+    font-weight: 400;
+}
+
+.card__text {
+
+    height: 130px;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 12px;
+    line-height: 22px;
+    font-family: InterUI, Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 4px;
+    margin-bottom: 14px;
+}

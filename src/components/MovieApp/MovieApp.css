@@ -1,0 +1,33 @@
+
+.root, div, body, html {
+    
+   padding: 0;
+   margin: 0;
+}
+
+
+
+.movie-app { 
+
+    width: 100%;
+    min-height: 100vh;
+    background-color: rgba(247, 247, 247, 1);
+    overflow: hidden;
+
+    
+}
+
+.main {
+
+    width: 1010px;
+    height: 100vh;
+    background-color: white;
+    
+    margin: 0 auto;
+ 
+    overflow: scroll;
+}
+
+.main::-webkit-scrollbar {
+    width: 0;
+  }
