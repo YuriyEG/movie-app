@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Card from '../Card/Card';
-import LoadingSpin from '../Spin/Spin.js';
+import LoadingSpin from '../Spin/Spin';
 
 import './CardList.css';
 
