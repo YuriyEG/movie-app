@@ -1,0 +1,8 @@
+
+
+.spin__wrapper {
+    position: absolute;
+    left: 500px;
+    top: 150px;
+    border: 1px solid blue;
+}
