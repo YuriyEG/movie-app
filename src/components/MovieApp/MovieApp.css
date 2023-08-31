@@ -5,8 +5,45 @@
    margin: 0;
 }
 
+.main::-webkit-scrollbar {
+    width: 0;
+  }
+  ::-webkit-scrollbar {
+    width: 0;
+  }
+
+@media screen and (max-width: 1009px) {
+    
+.movie-app { 
+
+    width: 100%;
+    min-width: 420px;
+    min-height: 100vh;
+    background-color: rgba(247, 247, 247, 1);
+    overflow: hidden;
+
+    
+}
+
+.main {
+
+    width: 100%;
+    min-width: 420px;
+    height: 100vh;
+    background-color: white;
+    
+    margin: 0 auto;
+ 
+    overflow: scroll;
+}
 
 
+    
+}
+
+
+@media screen and ( min-width: 1010px) {
+    
 .movie-app { 
 
     width: 100%;
@@ -28,6 +65,6 @@
     overflow: scroll;
 }
 
-.main::-webkit-scrollbar {
-    width: 0;
-  }
+
+
+}

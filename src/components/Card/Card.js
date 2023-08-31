@@ -2,6 +2,7 @@ import React from 'react';
 
 import './Card.css';
 import Stars from '../Stars/Stars';
+import '../Stars/Stars.css';
 
 const date = 'March 5, 2020';
 const rating = '6.6';
@@ -25,7 +26,10 @@ const Card = () => {
           basketball all-star, who has lost his wife and family foundation in a struggle with addiction attempts to
           regain his soul and salvation by becoming the coach of a disparate ethnically mixed high ...
         </div>
-        <Stars />
+
+        <div className="card__component-wrapper">
+          <Stars />
+        </div>
       </div>
     </div>
   );

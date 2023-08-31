@@ -3,9 +3,155 @@
     src: url("./Inter-Regular.ttf");
   }
 
-/* div, span {
-    border: 0.5px solid black;
-} */
+
+@media screen and (max-width: 1009px) {
+    
+    
+.card {
+
+    width: 388px;
+    height: 245px;
+    display: inline-flex;
+    box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.15);
+    
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 22px;
+    position: relative;
+
+}
+
+.card__picture {
+
+    width: 60px;
+    height: 91px;
+    background-image: url('./picture.jpg');
+    background-size: 100%;
+    position: absolute;
+    left: 8px;
+    top: 6px;
+    
+
+   
+
+}
+
+.card__info {
+
+ 
+    width: 272px;
+    height: 280px;
+    display: flex;
+    flex-direction: column;
+}
+
+.card__header {
+
+    width: 272px;
+    height: 32px;
+    padding-top: 4px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    
+    
+}
+
+.card__title {
+
+    font-size: 20px;
+    line-height: 28px;
+    margin-left: 80px;
+    font-family: InterUI, Arial, Helvetica, sans-serif;
+    font-weight: 600px;
+
+}
+
+.card__rating {
+    display: inline-block;
+    width: 36px;
+    height: 36px;
+    margin-right: 8px;
+    box-sizing: border-box;
+    border-radius: 50%;
+    margin-top: -2px;
+    border: 2.5px solid rgba(233, 209, 0, 1);
+    font-size: 12px;
+    line-height: 32px;
+    text-align: center;
+    font-family: InterUI, Arial, Helvetica, sans-serif;
+    position: absolute;
+    right: -2px;
+    top: 6px;
+}
+
+.card__date {
+    display: inline-block;
+    height: 22px;
+    font-size: 12px;
+    line-height: 22px;
+    font-family: InterUI, Arial, Helvetica, sans-serif;
+    color: rgba(130, 126, 126, 1);
+    margin-left: 80px;
+
+}
+
+.card__genres {
+    display: flex;
+    flex-direction: row;
+    width: 70%;
+    height: 20px;
+
+    margin-top: 12px;
+    margin-left: 80px;
+    
+}
+.card__genres-item {
+    display: inline-block;
+    height: 15px;
+    width: auto;
+    border: 1px solid rgba(217, 217, 217, 1);
+    border-radius: 2px;
+    margin-right: 8px;
+    font-size: 12px;
+    line-height: 15px;
+    font-family: InterUI, Arial, Helvetica, sans-serif;
+    color: rgba(0, 0, 0, 0.65);
+    padding: 1px 4px 1px  4px;
+    font-weight: 400;
+}
+
+.card__text {
+
+    height: 92px;
+    width: 367px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 12px;
+    line-height: 22px;
+    font-family: InterUI, Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+    
+    padding-top: 0px;
+    margin-bottom: 6px;
+    margin-top: 16px;
+    margin-left: 12px;
+   
+    
+}
+
+.card__component-wrapper {
+    width: 384px;
+    height: auto;
+
+    box-sizing: border-box;
+    padding-left: 124px;
+}
+
+}
+
+@media screen and (min-width: 1010px) {
+
 
 .card {
 
@@ -126,4 +272,6 @@
     padding-right: 20px;
     padding-top: 4px;
     margin-bottom: 14px;
+}
+
 }
