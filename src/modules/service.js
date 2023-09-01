@@ -24,7 +24,7 @@ export default class ServiceApi extends Component {
   }
 
   async getPageMovies(movieName, page, callback) {
-    const url = new URL('3/searcwh/movie', this.state.url);
+    const url = new URL('3/search/movie', this.state.url);
     url.searchParams.set('api_key', this.state.apiKey);
     url.searchParams.set('query', movieName);
     url.searchParams.set('page', page);
