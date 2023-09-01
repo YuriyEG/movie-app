@@ -1,7 +1,7 @@
+/* eslint-disable */
 import React from 'react';
 
 import transformDate from '../../modules/transformDate';
-
 import './Card.css';
 import Stars from '../Stars/Stars';
 import '../Stars/Stars.css';
@@ -27,7 +27,6 @@ const editText = (text, length, end) => {
 };
 
 const Card = ({ film }) => {
-  console.log(film);
   const overview = editText(film.overview, 200, '...');
   const title = editText(film.title, 10, '');
   const rating = film.vote_average;

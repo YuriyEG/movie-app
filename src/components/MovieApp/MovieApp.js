@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import React, { useState } from 'react';
 
 import ServiceApi from '../../modules/service';
@@ -24,9 +26,6 @@ const MovieApp = () => {
     getData(value, 2);
   }
 
-  window.onoffline = () => {
-    console.log('offline');
-  };
   return (
     <div className="movie-app">
       <div className="main">
