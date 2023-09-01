@@ -23,17 +23,25 @@ export default class ServiceApi extends Component {
     }
   }
 
-  async getPageMovies(movieName, page) {
-    const url = new URL('3/search/movie', this.state.url);
+  async getPageMovies(movieName, page, callback) {
+    const url = new URL('3/searcwh/movie', this.state.url);
     url.searchParams.set('api_key', this.state.apiKey);
     url.searchParams.set('query', movieName);
     url.searchParams.set('page', page);
     try {
       const result = await fetch(url);
-      if (!result.ok) throw new Error(`Failed to Fetch: ${url} Description: ${result.statusText}`);
+
+      if (!result.ok) {
+        if (result.status === 404 && movieName !== '') {
+          callback();
+        }
+        // throw new Error(`Failed to Fetch: ${url} Description: ${result.statusText}`);
+        return 'not found';
+      }
+
       return await result.json();
     } catch (e) {
-      throw new Error('Server ne rabotaet');
+      return 'disconnected';
     }
   }
 
