@@ -33,13 +33,26 @@ const Card = ({ film }) => {
   const date = transformDate(film.release_date);
   const poster = film.poster_path;
 
+
+  let color;
+  if (rating <= 3) {
+    color = '#E90000'
+  } else if (rating <=5 && rating > 3) {
+    color = '#E97E00'
+  } else if (rating <=7 && rating > 5) {
+    color = '#E9D100'
+  } else if (rating > 7) {
+    color = '#66E900'
+  }
+  console.log(color);
+
   return (
     <div className="card">
       <div className="card__picture"></div>
       <div className="card__info">
         <div className="card__header">
           <span className="card__title">{film.title} </span>
-          <div className="card__rating">{rating}</div>
+          <div className="card__rating" style={{ border: `3px solid ${color}`}}>{rating}</div>
         </div>
         <span className="card__date">{date}</span>
         <div className="card__genres">
