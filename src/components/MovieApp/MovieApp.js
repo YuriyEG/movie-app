@@ -10,10 +10,11 @@ import './MovieApp.css';
 import SearchForm from '../SearchForm/SearchForm';
 import Pagin from '../Pagin/Pagin';
 import CardList from '../CardList/CardList';
+import CardListRouted from '../CardListRouted/CardListRouted';
 import Filter from '../Filter/Filter';
 import AlertBox from '../Alert/AlertBox';
 import useToken from 'antd/es/theme/useToken';
-import { notification } from 'antd';
+import { Card, notification } from 'antd';
 
 const MovieApp = () => {
   const [isNotFound, setIsNotFound] = useState(false);
@@ -22,6 +23,14 @@ const MovieApp = () => {
   const [data, setData] = useState({});
   const [inputValue, setInputValue] = useState('');
 
+  const [mode, setMode] = useState(true);
+
+
+
+    const curData = JSON.parse(window.localStorage.getItem('defaultData'));
+
+
+  
 
   const service = new ServiceApi();
   
@@ -36,6 +45,7 @@ const MovieApp = () => {
     const result = await service.getPageMovies(query, page, () => setIsNotFound(true));
     console.log('result: ', result);
     setData(result);
+
     setSpin(false);
     
     if (result !== 'not found' && result !== 'disconnected') {
@@ -58,11 +68,18 @@ const MovieApp = () => {
   const alertMessage = 'Отсутствует сеть';
   const alertType = 'error';
 
+ 
   return (
     <div className="movie-app">
       <div className="main">
-        <Filter message={alertMessage}/>
+
+        <Filter message={alertMessage} mode={mode} setMode={setMode} />
+        { mode ? 
         <SearchForm getDataHandler={getDataHandler} />
+        :
+        null
+        }
+        
         <Offline>
           <div className='alertWrapper'>
           <AlertBox message={alertMessage} type={alertType}/>
@@ -79,7 +96,7 @@ const MovieApp = () => {
           null
         }
         {
-          (noResults )?
+          (noResults && mode)?
                   <div className='alertWrapper'>
           <AlertBox message='Поиск не дал результатов' type='error'/>
         </div>
@@ -94,7 +111,14 @@ const MovieApp = () => {
         
         {spin ? <LoadingSpin /> : <div></div>}
 
-        {data.results ? <CardList list={data.results} /> : <h1>Данные пока не загружены</h1>}
+        {(data.results && mode) ? <CardList list={data.results} /> : null }
+        { !mode ?
+        <CardListRouted list={curData.results}/>
+        :
+        null 
+       }
+        
+
 
         <Pagin />
       </div>

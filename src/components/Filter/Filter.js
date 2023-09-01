@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Filter.css';
 
-const Filter = () => {
+const Filter = ({ setMode }) => {
   const [searchOn, setSearchOn] = useState(true);
 
   let searchStyle = 'filter__search';
@@ -17,9 +17,11 @@ const Filter = () => {
   const filterToggle = (e) => {
     if (e.target.getAttribute('name') === 'search' && searchOn !== true) {
       setSearchOn(true);
+      setMode(true);
     }
     if (e.target.getAttribute('name') === 'rated' && searchOn === true) {
       setSearchOn(false);
+      setMode(false);
     }
   };
   return (
