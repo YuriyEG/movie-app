@@ -6,11 +6,12 @@ export default class ServiceApi extends Component {
     this.state = {
       url: new URL('https://api.themoviedb.org'),
       mainURL: 'https://api.themoviedb.org/3',
-      apiKey: '3ba8ed94a5e6700ab22695e77491f859',
+      apiKey: '1ad6b21850f623de3fc247a586277fc9',
     };
   }
+
   async getAllMovies(movieName) {
-    let url = new URL('3/search/movie', this.state.url);
+    const url = new URL('3/search/movie', this.state.url);
     url.searchParams.set('api_key', this.state.apiKey);
     url.searchParams.set('query', movieName);
     try {
@@ -21,8 +22,9 @@ export default class ServiceApi extends Component {
       throw new Error('Ne otveta ne priveta at servera');
     }
   }
+
   async getPageMovies(movieName, page) {
-    let url = new URL('3/search/movie', this.state.url);
+    const url = new URL('3/search/movie', this.state.url);
     url.searchParams.set('api_key', this.state.apiKey);
     url.searchParams.set('query', movieName);
     url.searchParams.set('page', page);
@@ -34,8 +36,9 @@ export default class ServiceApi extends Component {
       throw new Error('Server ne rabotaet');
     }
   }
+
   async getGenres() {
-    let url = new URL('3/genre/movie/list', this.state.url);
+    const url = new URL('3/genre/movie/list', this.state.url);
     url.searchParams.set('api_key', this.state.apiKey);
     try {
       const result = await fetch(url);
