@@ -22,7 +22,8 @@ const MovieApp = () => {
   const [noResults, setNoResults] = useState(false);
   const [spin, setSpin] = useState(false);
   const [data, setData] = useState({});
-  const [inputValue, setInputValue] = useState('');
+  
+  const [savedValue, setSavedValue] = useState('');
 
   const [mode, setMode] = useState(true);
 
@@ -34,6 +35,11 @@ const MovieApp = () => {
   
   async function getData(query, page) {
 
+    // if (query === undefined) {
+    //   query = savedValue;
+    // }
+    console.log(`query is ${query} and page is ${page}`);
+    
     setNoResults(false);
     setIsNotFound(false);
     setSpin(true);
@@ -60,7 +66,7 @@ const MovieApp = () => {
 
 
   function getDataHandler(value, page = 1) {
-  
+      
       getData(value, page);
     
   }
@@ -69,7 +75,7 @@ const MovieApp = () => {
 
   const alertMessage = 'Отсутствует сеть';
   const alertType = 'error';
-
+  console.log(data.total_pages);
 
   return (
     <div className="movie-app">
@@ -77,7 +83,7 @@ const MovieApp = () => {
 
         <Filter message={alertMessage} mode={mode} setMode={setMode} />
         { mode ? 
-        <SearchForm getDataHandler={getDataDebounced} />
+        <SearchForm getDataHandler={getDataDebounced} setSavedValue={setSavedValue} />
         :
         null
         }
@@ -121,7 +127,7 @@ const MovieApp = () => {
        }
 
       
-      <Pagin getDataDebounced={getDataDebounced} page={data.page} inputValue={inputValue}/>
+      <Pagin getDataDebounced={getDataDebounced} page={data.page} totalPages={data.total_pages}/>
       </div>
     </div>
   );
