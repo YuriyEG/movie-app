@@ -22,6 +22,7 @@ const MovieApp = () => {
   const [noResults, setNoResults] = useState(false);
   const [spin, setSpin] = useState(false);
   const [data, setData] = useState({});
+  const [isBlock, setIsBlock] = useState(false);
   
   const [savedValue, setSavedValue] = useState('');
 
@@ -68,9 +69,19 @@ const MovieApp = () => {
 
   function getDataHandler(value, page = 1) {
       
-      getData(value, page);
-    
-  }
+      if (!isBlock) {
+        setIsBlock(true);
+        setTimeout(() => {
+          console.log('запущена')
+          getData(value, page);
+          setIsBlock(false);
+        }, 2000);
+        
+      } 
+
+      }
+      
+
 
 
 

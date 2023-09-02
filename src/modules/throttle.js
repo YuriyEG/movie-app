@@ -1,14 +1,16 @@
 const throttle = (fn, throttleTime) => {
   let start = -Infinity;
-  let result;
+  let cachedResult;
+
   return function () {
     const end = Date.now();
+
     if (end - start >= throttleTime) {
-      result = fn.apply(this, arguments);
       start = end;
+      cachedResult = fn.apply(this, arguments);
     }
 
-    return result;
+    return cachedResult;
   };
 };
 export default throttle;
