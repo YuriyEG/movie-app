@@ -35,9 +35,9 @@ const MovieApp = () => {
   
   async function getData(query, page) {
 
-    // if (query === undefined) {
-    //   query = savedValue;
-    // }
+    if (query === undefined) {
+      query = savedValue;
+    }
     console.log(`query is ${query} and page is ${page}`);
     
     setNoResults(false);
