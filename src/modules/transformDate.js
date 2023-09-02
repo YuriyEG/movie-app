@@ -26,7 +26,7 @@ export default function transformDate(date) {
     mounth = 'June';
     break;
     case '07':
-    mounth = 'Jule';
+    mounth = 'July';
     break;
     case '08':
     mounth = 'August';

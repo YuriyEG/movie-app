@@ -31,10 +31,13 @@
     position: absolute;
     left: 8px;
     top: 6px;
+
+}
+
+.card__image {
+    width: 60px;
+    height: 91px;
     
-
-   
-
 }
 
 .card__info {
@@ -48,24 +51,25 @@
 
 .card__header {
 
-    width: 272px;
-    height: 32px;
+    width: 340px;
+    height: auto;
     padding-top: 4px;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    
+    justify-content: space-between; 
     
 }
 
 .card__title {
 
+    width: 100%;
+    height: auto;
     font-size: 20px;
     line-height: 28px;
     margin-left: 80px;
     font-family: InterUI, Arial, Helvetica, sans-serif;
-    font-weight: 600px;
-
+    font-weight: 900px;
+    
 }
 
 .card__rating {
@@ -134,7 +138,7 @@
     
     padding-top: 0px;
     margin-bottom: 6px;
-    margin-top: 16px;
+    margin-top: 20px;
     margin-left: 12px;
    
     
@@ -146,6 +150,9 @@
 
     box-sizing: border-box;
     padding-left: 124px;
+    position: absolute;
+    bottom: 16px;
+    right: 10px;
 }
 
 }
@@ -174,27 +181,32 @@
     height: 280px;
     background-image: url('./picture.jpg');
 
+}
 
+.card__image {
+
+    width: 182px;
+    height: 280px;
 }
 
 .card__info {
 
- 
     width: 272px;
     height: 280px;
     display: flex;
     flex-direction: column;
+    position: relative;
+
 }
 
 .card__header {
 
     width: 272px;
-    height: 36px;
+    height: auto;
     padding-top: 10px;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    
+    justify-content: space-between;  
     
 }
 
@@ -204,6 +216,7 @@
     line-height: 28px;
     margin-left: 20px;
     font-family: InterUI, Arial, Helvetica, sans-serif;
+    width: 200px;
 
 }
 
@@ -260,7 +273,7 @@
 
 .card__text {
 
-    height: 130px;
+    height: 120px;
     width: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -272,6 +285,18 @@
     padding-right: 20px;
     padding-top: 4px;
     margin-bottom: 14px;
+ 
+}
+
+.card__component-wrapper {
+    width: 384px;
+    height: auto;
+    box-sizing: border-box;
+    padding-left: 124px;
+    position: absolute;
+    bottom: 16px;
+    right: 10px;
+    
 }
 
 }

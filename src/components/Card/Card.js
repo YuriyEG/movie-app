@@ -1,6 +1,7 @@
 /* eslint-disable */
 import React from 'react';
 
+
 import transformDate from '../../modules/transformDate';
 import './Card.css';
 import Stars from '../Stars/Stars';
@@ -27,9 +28,9 @@ const editText = (text, length, end) => {
 };
 
 const Card = ({ film }) => {
-  const overview = editText(film.overview, 200, '...');
-  const title = editText(film.title, 10, '');
-  const rating = film.vote_average;
+  const overview = editText(film.overview, 150, '...');
+  const title = editText(film.title, 20, '');
+  const rating = film.vote_average.toFixed(1);
   const date = transformDate(film.release_date);
   const poster = film.poster_path;
 
@@ -44,14 +45,24 @@ const Card = ({ film }) => {
   } else if (rating > 7) {
     color = '#66E900'
   }
-  console.log(color);
+  
+  const imageUrl = film.poster_path;
+  
+  let posterImage = `https://image.tmdb.org/t/p/w500${imageUrl}`;
 
+  const showValue = ( value ) => {
+    console.log(value);
+  }
+  
+  
   return (
     <div className="card">
-      <div className="card__picture"></div>
+      <div className="card__picture">
+        <img className='card__image' src={posterImage} alt=''></img>
+      </div>
       <div className="card__info">
         <div className="card__header">
-          <span className="card__title">{film.title} </span>
+          <span className="card__title">{title} </span>
           <div className="card__rating" style={{ border: `3px solid ${color}`}}>{rating}</div>
         </div>
         <span className="card__date">{date}</span>
@@ -62,7 +73,7 @@ const Card = ({ film }) => {
         <div className="card__text">{overview}</div>
 
         <div className="card__component-wrapper">
-          <Stars />
+          <Stars rating={rating} showValue={showValue}/>
         </div>
       </div>
     </div>

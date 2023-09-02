@@ -1,14 +1,14 @@
 import React from 'react';
 import { Rate } from 'antd';
 
-const thisValue = 8;
-const Stars = () => (
+const Stars = ({ rating, showValue }) => (
   <Rate
-    disabled
     count={10}
     style={{ transform: 'scale(85%)', width: '280px', display: 'inline-block' }}
-    defaultValue={2}
-    value={thisValue}
+    defaultValue={2.5}
+    value={rating}
+    onChange={showValue}
+    allowHalf
   />
 );
 
