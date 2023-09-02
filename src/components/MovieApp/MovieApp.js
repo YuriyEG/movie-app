@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { Online, Offline } from 'react-detect-offline';
+import debounce from '../../modules/debouce';
 
 import ServiceApi from '../../modules/service';
 import LoadingSpin from '../Spin/Spin';
@@ -60,22 +61,28 @@ const MovieApp = () => {
 
   }
 
+  
 
-  function getDataHandler(value) {
-    getData(value, 2);
+
+  function getDataHandler(value, blocked) {
+  
+      getData(value, 2);
+    
   }
+
+  const getDataDebounced = debounce( getDataHandler, 700);
 
   const alertMessage = 'Отсутствует сеть';
   const alertType = 'error';
 
- 
+
   return (
     <div className="movie-app">
       <div className="main">
 
         <Filter message={alertMessage} mode={mode} setMode={setMode} />
         { mode ? 
-        <SearchForm getDataHandler={getDataHandler} />
+        <SearchForm getDataHandler={getDataDebounced} />
         :
         null
         }
