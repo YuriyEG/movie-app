@@ -1,0 +1,32 @@
+
+
+@media screen and (max-width: 1009px) {
+
+    
+    .cardListRouted {
+        width: 100%;
+        min-width: 420px;
+        height: auto;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        padding-top: 12px;
+
+    }
+    }
+    
+    @media screen and (min-width: 1010px) {
+    
+        
+    .cardListRouted {
+        width: 1010px;
+        height: auto;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding-left: 34px;
+ 
+    }
+    }
+    
