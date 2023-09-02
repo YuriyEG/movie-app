@@ -50,10 +50,6 @@ const Card = ({ film }) => {
   
   let posterImage = `https://image.tmdb.org/t/p/w500${imageUrl}`;
 
-  const showValue = ( value ) => {
-    console.log(value);
-  }
-  
   
   return (
     <div className="card">
@@ -73,7 +69,7 @@ const Card = ({ film }) => {
         <div className="card__text">{overview}</div>
 
         <div className="card__component-wrapper">
-          <Stars rating={rating} showValue={showValue}/>
+          <Stars rating={rating}/>
         </div>
       </div>
     </div>

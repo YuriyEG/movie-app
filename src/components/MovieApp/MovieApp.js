@@ -38,7 +38,7 @@ const MovieApp = () => {
     setIsNotFound(false);
     setSpin(true);
     const result = await service.getPageMovies(query, page, () => setIsNotFound(true));
-    console.log('result: ', result);
+
     setData(result);
 
     setSpin(false);
@@ -53,14 +53,15 @@ const MovieApp = () => {
 
     }
 
+
   }
 
   
 
 
-  function getDataHandler(value, blocked) {
+  function getDataHandler(value, page = 1) {
   
-      getData(value, 2);
+      getData(value, page);
     
   }
 
@@ -120,7 +121,7 @@ const MovieApp = () => {
        }
 
       
-      <Pagin />
+      <Pagin getDataDebounced={getDataDebounced} page={data.page} inputValue={inputValue}/>
       </div>
     </div>
   );
