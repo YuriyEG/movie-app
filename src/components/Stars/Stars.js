@@ -7,7 +7,6 @@ const Stars = ({ rating }) => (
     style={{ transform: 'scale(85%)', width: '280px', display: 'inline-block' }}
     defaultValue={2.5}
     value={rating}
-    onChange={(v) => console.log(v)}
     allowHalf
   />
 );
