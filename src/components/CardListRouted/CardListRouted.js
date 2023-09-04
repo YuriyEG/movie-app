@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import Card from '../Card/Card';
 import getRated from '../../modules/getRatedMovies';
 import GuestSession from '../../modules/quest-session';
+import Pagin from '../Pagin/Pagin';
 import './CardListRouted.css';
 
 const guestapi = new GuestSession();
@@ -31,8 +32,9 @@ const CardListRouted = ({ curData, guestSessionId }) => {
   return (
     <div className="cardListRouted">
       {ratedData.results.map((film) => (
-        <Card key={Math.random()} guestSessionId={guestSessionId} film={film} onClick={() => console.log('works')} />
+        <Card key={Math.random()} guestSessionId={guestSessionId} film={film} />
       ))}
+      <Pagin />
     </div>
   );
 };
