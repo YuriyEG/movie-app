@@ -17,6 +17,51 @@ import AlertBox from '../Alert/AlertBox';
 import useToken from 'antd/es/theme/useToken';
 import { Card, notification } from 'antd';
 
+async function runGuest () {
+ let guestId; 
+  console.log('runguest');
+
+const url = 'https://api.themoviedb.org/3/authentication/guest_session/new';
+const options = {
+  method: 'GET',
+  headers: {
+    accept: 'application/json',
+    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxYWQ2YjIxODUwZjYyM2RlM2ZjMjQ3YTU4NjI3N2ZjOSIsInN1YiI6IjY0ZWU0ODdmY2FhNTA4MDE0YzhhOTU1OSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ._68FhU65OQc3syJxfAuvCI02Iuc1OgCu75WBedJc6Zw'
+  }
+};
+
+
+
+
+fetch(url, options)
+  .then(res => res.json())
+  .then(json => {
+    showId(json.guest_session_id);
+  })
+  .catch(err => console.error('error:' + err));
+
+const showId = (id) => {
+  const fetch = require('node-fetch');
+
+const url = `https://api.themoviedb.org/3/guest_session/${id}/rated/movies?language=en-US&page=1`;
+const options = {
+  method: 'GET',
+  headers: {
+    accept: 'application/json',
+    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxYWQ2YjIxODUwZjYyM2RlM2ZjMjQ3YTU4NjI3N2ZjOSIsInN1YiI6IjY0ZWU0ODdmY2FhNTA4MDE0YzhhOTU1OSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ._68FhU65OQc3syJxfAuvCI02Iuc1OgCu75WBedJc6Zw'
+  }
+};
+
+fetch(url, options)
+  .then(res => res.json())
+  .then(json => console.log(json, 'otvet rated'))
+  .catch(err => console.error('error:' + err));
+}
+
+}
+
+runGuest();
+
 const MovieApp = () => {
   const [isNotFound, setIsNotFound] = useState(false);
   const [noResults, setNoResults] = useState(false);
