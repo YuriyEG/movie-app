@@ -2,10 +2,13 @@
 import React from 'react';
 
 
+
 import transformDate from '../../modules/transformDate';
 import './Card.css';
 import Stars from '../Stars/Stars';
 import '../Stars/Stars.css';
+import rateMovie from '../../modules/rateMovie';
+import GuestSession from '../../modules/quest-session';
 
 const date = 'March 5, 2020';
 const rating = '6.6';
@@ -27,7 +30,9 @@ const editText = (text, length, end) => {
   return `${cur}${end}`;
 };
 
-const Card = ({ film }) => {
+
+
+const Card = ({ film, guestSessionId, onClick }) => {
   const overview = editText(film.overview, 150, '...');
   const title = editText(film.title, 20, '');
   const rating = film.vote_average.toFixed(1);
@@ -50,6 +55,20 @@ const Card = ({ film }) => {
   
   let posterImage = `https://image.tmdb.org/t/p/w500${imageUrl}`;
 
+  const  rateById = (rate) => {
+    console.log(rate);
+    console.log(film.id);
+    console.log(guestSessionId);
+    rateMovie(guestSessionId, film.id, rate);
+  }
+
+  const guesssss = new GuestSession();
+  
+  const RateCard = () => {
+    console.log('rate');
+    guesssss.postRateStars(guestSessionId, film.id , 4)
+  }
+
   
   return (
     <div className="card">
@@ -69,7 +88,7 @@ const Card = ({ film }) => {
         <div className="card__text">{overview}</div>
 
         <div className="card__component-wrapper">
-          <Stars rating={rating}/>
+          <Stars rating={rating} rateById={RateCard}/>
         </div>
       </div>
     </div>
