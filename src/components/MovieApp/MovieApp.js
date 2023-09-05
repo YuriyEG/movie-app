@@ -99,6 +99,8 @@ const MovieApp = () => {
   const alertMessage = 'Отсутствует сеть';
   const alertType = 'error';
 
+  const curData = { page: 1, results: [], total_pages: 1, total_results: 0 };
+
   
  
 
