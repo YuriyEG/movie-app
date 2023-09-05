@@ -179,6 +179,7 @@ const MovieApp = () => {
       
       { mode ? <Pagin getDataDebounced={getDataHandler} page={data.page} totalPages={data.total_pages}/> : null }
      
+     
       </div>
     </div>
   );

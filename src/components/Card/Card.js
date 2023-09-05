@@ -64,9 +64,9 @@ const Card = ({ film, guestSessionId, onClick }) => {
 
   const guesssss = new GuestSession();
   
-  const RateCard = () => {
+  const RateCard = (rate) => {
     console.log('rate');
-    guesssss.postRateStars(guestSessionId, film.id , 4)
+    guesssss.postRateStars(guestSessionId, film.id , rate)
   }
 
   
