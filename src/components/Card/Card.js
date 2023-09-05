@@ -7,7 +7,6 @@ import transformDate from '../../modules/transformDate';
 import './Card.css';
 import Stars from '../Stars/Stars';
 import '../Stars/Stars.css';
-import rateMovie from '../../modules/rateMovie';
 import GuestSession from '../../modules/GuestSession';
 
 const editText = (text, length, end) => {
@@ -26,13 +25,11 @@ const editText = (text, length, end) => {
 
 
 
-const Card = ({ film, guestSessionId, onClick }) => {
+const Card = ({ film, guestSessionId }) => {
   const overview = editText(film.overview, 150, '...');
   const title = editText(film.title, 20, '');
   const rating = film.vote_average.toFixed(1);
   const date = transformDate(film.release_date);
-  const poster = film.poster_path;
-
 
   let color;
   if (rating <= 3) {

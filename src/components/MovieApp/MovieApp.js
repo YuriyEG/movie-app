@@ -19,7 +19,6 @@ import AlertBox from '../Alert/AlertBox';
 import useToken from 'antd/es/theme/useToken';
 import { Card, notification } from 'antd';
 
-import rateMovie from './../../modules/rateMovie';
 
 import { da } from 'date-fns/locale';
 
@@ -146,7 +145,7 @@ const MovieApp = () => {
         
         {spin ? <LoadingSpin /> : <div></div>}
 
-        {(data.results && mode) ? <CardList rateMovie={rateMovie} guestSessionId={guestId} list={data.results} /> : null }
+        {(data.results && mode) ? <CardList guestSessionId={guestId} list={data.results} /> : null }
         { !mode ?
         <CardListRouted curData={curData} guestSessionId={guestId}/>
         :

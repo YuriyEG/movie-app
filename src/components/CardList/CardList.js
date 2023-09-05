@@ -4,11 +4,11 @@ import Card from '../Card/Card';
 
 import './CardList.css';
 
-const CardList = ({ list, rateMovie, guestSessionId }) => {
+const CardList = ({ list, guestSessionId }) => {
   return (
     <div className="cardlist">
       {list.map((film) => (
-        <Card key={Math.random()} rateMovie={rateMovie} guestSessionId={guestSessionId} film={film} />
+        <Card key={Math.random()} guestSessionId={guestSessionId} film={film} />
       ))}
     </div>
   );
