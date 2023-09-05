@@ -8,7 +8,7 @@ import './Card.css';
 import Stars from '../Stars/Stars';
 import '../Stars/Stars.css';
 import rateMovie from '../../modules/rateMovie';
-import GuestSession from '../../modules/quest-session';
+import GuestSession from '../../modules/GuestSession';
 
 const date = 'March 5, 2020';
 const rating = '6.6';

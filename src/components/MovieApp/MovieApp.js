@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { Online, Offline } from 'react-detect-offline';
-import GuestSession from '../../modules/quest-session';
+import GuestSession from '../../modules/GuestSession';
 
 
 import Service from '../../modules/service';

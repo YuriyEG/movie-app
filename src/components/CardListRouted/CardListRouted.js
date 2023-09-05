@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import Card from '../Card/Card';
-import GuestSession from '../../modules/quest-session';
+import GuestSession from '../../modules/GuestSession';
 import Pagin from '../Pagin/Pagin';
 import './CardListRouted.css';
 
