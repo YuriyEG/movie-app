@@ -10,12 +10,6 @@ import '../Stars/Stars.css';
 import rateMovie from '../../modules/rateMovie';
 import GuestSession from '../../modules/GuestSession';
 
-const date = 'March 5, 2020';
-const rating = '6.6';
-
-const source =
-  'A former basketball all-star, who has lost his wife and family foundation in a struggle with addiction attempts to regain his soul  and salvation by becoming the coach of a disparate ethnically mixed high ...';
-
 const editText = (text, length, end) => {
   if (text.length < length) {
     return `${text}...`;
@@ -55,18 +49,11 @@ const Card = ({ film, guestSessionId, onClick }) => {
   
   let posterImage = `https://image.tmdb.org/t/p/w500${imageUrl}`;
 
-  const  rateById = (rate) => {
-    console.log(rate);
-    console.log(film.id);
-    console.log(guestSessionId);
-    rateMovie(guestSessionId, film.id, rate);
-  }
-
-  const guesssss = new GuestSession();
+  const guestSession = new GuestSession();
   
   const RateCard = (rate) => {
     console.log('rate');
-    guesssss.postRateStars(guestSessionId, film.id , rate)
+    guestSession.postRateStars(guestSessionId, film.id , rate)
   }
 
   
