@@ -1,5 +1,5 @@
 /* eslint-disable */
-console.log('movieData: ', movieData);
+
 import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { Online, Offline } from 'react-detect-offline';
