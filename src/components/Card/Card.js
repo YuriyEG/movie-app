@@ -49,7 +49,6 @@ const Card = ({ film, guestSessionId }) => {
   const guestSession = new GuestSession();
   
   const RateCard = (rate) => {
-    console.log('rate');
     guestSession.postRateStars(guestSessionId, film.id , rate)
   }
 

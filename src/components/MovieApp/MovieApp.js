@@ -56,8 +56,6 @@ const MovieApp = () => {
     if (query === undefined) {
       query = savedValue;
     }
-    console.log(`query is ${query} and page is ${page}`);
-    
     setNoResults(false);
     setIsNotFound(false);
     setSpin(true);
@@ -86,7 +84,6 @@ const MovieApp = () => {
       if (!isBlock) {
         setIsBlock(true);
         setTimeout(() => {
-          console.log('запущена')
           getData(value, page);
           setIsBlock(false);
         }, 2000);

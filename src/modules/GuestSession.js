@@ -16,11 +16,10 @@ export default class GuestSession extends Component {
       const result = await fetch(url);
       if (!result.ok) throw new Error('Failed to Fetch');
       const resultJson = await result.json();
-      console.log(resultJson, 'json');
       dataReceiver(resultJson);
       return await resultJson.guest_session_id;
     } catch (e) {
-      throw new Error('Failed get guest token');
+      throw new Error('ошибка при получении идентификатора гостевой сессии');
     }
   }
 
@@ -33,16 +32,14 @@ export default class GuestSession extends Component {
       const result = await fetch(url);
       if (!result.ok) throw new Error(`Failed to Fetch: ${url} Description: ${result.statusText}`);
       const sessionJson = await result.json();
-      console.log(guestSessionId, 'v colbake');
       callback(sessionJson);
       return await sessionJson;
     } catch (e) {
-      throw new Error('Ne poluchil tvoi guest session');
+      throw new Error('Ошибка при получении сохраненных фильмов');
     }
   }
 
   async postRateStars(token, movieId, countStars) {
-    console.log('postRatedStars');
     const sId = token;
     const url = new URL(`3/movie/${movieId}/rating`, this.state.url);
     url.searchParams.set('api_key', this.state.apiKey);
@@ -57,10 +54,9 @@ export default class GuestSession extends Component {
       });
       if (!result.ok) throw new Error(`Failed to Fetch: ${url} Description: ${result.statusText}`);
       const x = await result;
-      console.log(movieId);
       return x;
     } catch (e) {
-      throw new Error('Ne otpravlauca stars');
+      throw new Error('Ошибка отправки оценки');
     }
   }
 }

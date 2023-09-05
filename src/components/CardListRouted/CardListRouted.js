@@ -11,7 +11,6 @@ const CardListRouted = ({ curData, guestSessionId }) => {
   const [ratedData, setRatedData] = useState(curData);
 
   const showSession = (data) => {
-    console.log('policheno: ', data);
     setRatedData(data);
   };
   useEffect(() => {
