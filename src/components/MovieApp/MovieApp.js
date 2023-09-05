@@ -40,14 +40,14 @@ const MovieApp = () => {
 
   const service = new Service();
 
-  const questsession = new GuestSession();
+  const guestSession = new GuestSession();
 
   const  dataReceiver = (data) => {
     setGuestId(data.guest_session_id);
   }
 
   useEffect(() => {
-    questsession.getToken(dataReceiver);
+    guestSession.guestSeId(dataReceiver);
   }, [])
 
   

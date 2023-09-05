@@ -5,7 +5,7 @@ import GuestSession from '../../modules/GuestSession';
 import Pagin from '../Pagin/Pagin';
 import './CardListRouted.css';
 
-const guestapi = new GuestSession();
+const guestSession = new GuestSession();
 
 const CardListRouted = ({ curData, guestSessionId }) => {
   const [ratedData, setRatedData] = useState(curData);
@@ -15,7 +15,7 @@ const CardListRouted = ({ curData, guestSessionId }) => {
     setRatedData(data);
   };
   useEffect(() => {
-    guestapi.getSession(guestSessionId, 1, showSession);
+    guestSession.getSession(guestSessionId, 1, showSession);
   }, []);
 
   return (

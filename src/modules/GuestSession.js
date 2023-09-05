@@ -9,7 +9,7 @@ export default class GuestSession extends Component {
     };
   }
 
-  async getToken(dataReceiver) {
+  async guestSeId(dataReceiver) {
     const url = new URL('3/authentication/guest_session/new', this.state.url);
     url.searchParams.set('api_key', this.state.apiKey);
     try {
