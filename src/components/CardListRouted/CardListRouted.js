@@ -15,7 +15,6 @@ const CardListRouted = ({ curData, guestSessionId }) => {
     setRatedData(data);
   };
   useEffect(() => {
-    // loadRouted();
     guestapi.getSession(guestSessionId, 1, showSession);
   }, []);
 
