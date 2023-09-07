@@ -22,7 +22,6 @@ const CardListRouted = ({ curData, guestSessionId }) => {
       {ratedData.results.map((film) => (
         <Card key={Math.random()} guestSessionId={guestSessionId} film={film} />
       ))}
-      <Pagin />
     </div>
   );
 };

@@ -3,9 +3,11 @@
 
 @media screen and (max-width: 1010px) {
     .pagination {
+
     display: flex;
     flex-direction: row;
     justify-content: center;
+    margin-bottom: 20px;
     
 }
 }
@@ -14,10 +16,12 @@
 
 @media screen and (min-width: 1010px) {
     .pagination {
+
     display: flex;
     flex-direction: row;
     justify-content: center;
     margin-top: 34px;
+    margin-bottom: 20px;
     
 }
 

@@ -46,6 +46,8 @@ const Card = ({ film, guestSessionId }) => {
   
   let posterImage = `https://image.tmdb.org/t/p/w500${imageUrl}`;
 
+  
+
   const guestSession = new GuestSession();
   
   const RateCard = (rate) => {
