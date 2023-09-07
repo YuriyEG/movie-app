@@ -18,9 +18,7 @@ const CardListRouted = ({ curData, guestSessionId }) => {
   }, []);
 
   const getRatedByPagination = (ratedPage) => {
-    console.log(ratedPage, guestSessionId);
     guestSession.getSession(guestSessionId, ratedPage, showSession);
-    console.log(ratedPage, 'page');
   };
   return (
     <div>

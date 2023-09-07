@@ -5,7 +5,6 @@ import './Pagin.css';
 const Pagin = ({ getDataDebounced, page, totalPages }) => {
   const change = (curPage) => {
     getDataDebounced(undefined, curPage);
-    console.log(curPage);
   };
 
   return (
