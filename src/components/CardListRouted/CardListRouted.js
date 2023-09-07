@@ -28,7 +28,6 @@ const CardListRouted = ({ curData, guestSessionId }) => {
         ))}
       </div>
       <RatedPagin page={ratedData.page} totalPages={ratedData.total_pages} getDataDebounced={getRatedByPagination} />
-      {ratedData.total_pages}
     </div>
   );
 };
