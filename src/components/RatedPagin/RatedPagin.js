@@ -1,11 +1,10 @@
 import React from 'react';
 import { Pagination } from 'antd';
-import './Pagin.css';
+import './RatedPagin.css';
 
-const Pagin = ({ getDataDebounced, page, totalPages }) => {
+const RatedPagin = ({ getDataDebounced, page, totalPages }) => {
   const change = (curPage) => {
-    getDataDebounced(undefined, curPage);
-    console.log(curPage);
+    getDataDebounced(curPage);
   };
 
   return (
@@ -15,4 +14,4 @@ const Pagin = ({ getDataDebounced, page, totalPages }) => {
   );
 };
 
-export default Pagin;
+export default RatedPagin;
