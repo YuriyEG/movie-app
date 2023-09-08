@@ -26,10 +26,14 @@ const editText = (text, length, end) => {
 
 
 const Card = ({ film, guestSessionId }) => {
+
+
+  console.log(film.genre_ids);
   const overview = editText(film.overview, 150, '...');
   const title = editText(film.title, 20, '');
-  const rating = film.vote_average.toFixed(1);
+  const average = film.vote_average.toFixed(1);
   const date = transformDate(film.release_date);
+  const rating = film.rating;
 
   let color;
   if (rating <= 3) {
@@ -63,7 +67,7 @@ const Card = ({ film, guestSessionId }) => {
       <div className="card__info">
         <div className="card__header">
           <span className="card__title">{title} </span>
-          <div className="card__rating" style={{ border: `3px solid ${color}`}}>{rating}</div>
+          <div className="card__rating" style={{ border: `3px solid ${color}`}}>{average}</div>
         </div>
         <span className="card__date">{date}</span>
         <div className="card__genres">
