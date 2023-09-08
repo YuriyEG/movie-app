@@ -101,7 +101,7 @@ const MovieApp = () => {
         setTimeout(() => {
           getData(value, page);
           setIsBlock(false);
-        }, 2000);
+        }, 800);
         
       } 
 
