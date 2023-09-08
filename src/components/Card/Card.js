@@ -8,10 +8,11 @@ import './Card.css';
 import Stars from '../Stars/Stars';
 import '../Stars/Stars.css';
 import GuestSession from '../../modules/GuestSession';
+import { isDate } from 'date-fns/esm';
 
 const editText = (text, length, end) => {
   if (text.length < length) {
-    return `${text}...`;
+    return `${text}`;
   }
   let cur = text.slice(0, length, end);
   let i = length;
@@ -25,11 +26,11 @@ const editText = (text, length, end) => {
 
 
 
-const Card = ({ film, guestSessionId }) => {
+const Card = ({ film, guestSessionId, genresList }) => {
 
 
-  console.log(film.genre_ids);
-  const overview = editText(film.overview, 150, '...');
+
+  const overview = editText(film.overview, 140, '...');
   const title = editText(film.title, 20, '');
   const average = film.vote_average.toFixed(1);
   const date = transformDate(film.release_date);
@@ -57,6 +58,16 @@ const Card = ({ film, guestSessionId }) => {
   const RateCard = (rate) => {
     guestSession.postRateStars(guestSessionId, film.id , rate)
   }
+  
+  let ids = film.genre_ids;
+  let genresTrain = [];
+  for (let i=0; i<5; i++) {
+    if  (ids[i]) {
+      genresTrain.push(genresList[ids[i]]);
+    }
+  }
+
+  console.log('genresTrain: ', genresTrain);
 
   
   return (
@@ -71,8 +82,8 @@ const Card = ({ film, guestSessionId }) => {
         </div>
         <span className="card__date">{date}</span>
         <div className="card__genres">
-          <div className="card__genres-item">Action Film</div>
-          <div className="card__genres-item">Drama</div>
+          { genresTrain.map( genre => <div className="card__genres-item">{genre}</div> )}
+      
         </div>
         <div className="card__text">{overview}</div>
 

@@ -7,7 +7,7 @@ import './CardListRouted.css';
 
 const guestSession = new GuestSession();
 
-const CardListRouted = ({ curData, guestSessionId }) => {
+const CardListRouted = ({ curData, guestSessionId, genresList }) => {
   const [ratedData, setRatedData] = useState(curData);
 
   const showSession = (data) => {
@@ -24,7 +24,7 @@ const CardListRouted = ({ curData, guestSessionId }) => {
     <div>
       <div className="cardListRouted">
         {ratedData.results.map((film) => (
-          <Card key={Math.random()} rated={true} guestSessionId={guestSessionId} film={film} />
+          <Card key={Math.random()} genresList={genresList} rated={true} guestSessionId={guestSessionId} film={film} />
         ))}
       </div>
       <RatedPagin page={ratedData.page} totalPages={ratedData.total_pages} getDataDebounced={getRatedByPagination} />

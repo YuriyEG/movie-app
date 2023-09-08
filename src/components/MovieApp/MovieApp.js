@@ -7,6 +7,8 @@ import GuestSession from '../../modules/GuestSession';
 
 
 import Service from '../../modules/service';
+import ServiceApi from '../../modules/GetGenres';
+
 import LoadingSpin from '../Spin/Spin';
 import './MovieApp.css';
 
@@ -34,19 +36,44 @@ const MovieApp = () => {
   const [mode, setMode] = useState(true);
 
   const [guestId, setGuestId] = useState('');
+  const [genresList, setGenresList] = useState('');
 
 
 
   const service = new Service();
 
   const guestSession = new GuestSession();
+  const serviseApiG = new ServiceApi();
+
+
 
   const  dataReceiver = (data) => {
     setGuestId(data.guest_session_id);
   }
 
+  const loadGenres = (genres) => {
+    console.log('вернулось с колбека', genres);
+    
+
+  let gl = genres.genres;
+  console.log(gl);
+  let glArray = [];
+  for (let key in gl) {
+    let node = gl[key];
+    let id = node.id;
+    let name = node.name;
+    glArray[id] = name;
+  }
+  console.log('new Array : ', glArray);
+    setGenresList(glArray);
+  }
+
   useEffect(() => {
     guestSession.guestSeId(dataReceiver);
+    serviseApiG.getGenres(loadGenres);
+    
+    
+
   }, [])
 
   
@@ -111,6 +138,7 @@ const MovieApp = () => {
         null
         }
         
+        
         <Offline>
           <div className='alertWrapper'>
           <AlertBox message={alertMessage} type={alertType}/>
@@ -142,9 +170,9 @@ const MovieApp = () => {
         
         {spin ? <LoadingSpin /> : <div></div>}
 
-        {(data.results && mode) ? <CardList guestSessionId={guestId} list={data.results} /> : null }
+        {(data.results && mode) ? <CardList genresList={genresList} guestSessionId={guestId} list={data.results} /> : null }
         { !mode ?
-        <CardListRouted curData={curData} guestSessionId={guestId}/>
+        <CardListRouted genresList={genresList} curData={curData} guestSessionId={guestId}/>
         :
         null 
        }
