@@ -79,7 +79,7 @@ const Card = ({ film, guestSessionId, genresList }) => {
         </div>
         <span className="card__date">{date}</span>
         <div className="card__genres">
-          { genresTrain.map( genre => <div className="card__genres-item">{genre}</div> )}
+          { genresTrain.map( genre => <div key={Math.random()} className="card__genres-item">{genre}</div> )}
       
         </div>
         <div className="card__text">{overview}</div>
