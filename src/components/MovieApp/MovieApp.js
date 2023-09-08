@@ -7,7 +7,7 @@ import GuestSession from '../../modules/GuestSession';
 
 
 import Service from '../../modules/service';
-import ServiceApi from '../../modules/GetGenres';
+import GenresAPI from '../../modules/GenresAPI';
 
 import LoadingSpin from '../Spin/Spin';
 import './MovieApp.css';
@@ -37,26 +37,17 @@ const MovieApp = () => {
 
   const [guestId, setGuestId] = useState('');
   const [genresList, setGenresList] = useState('');
-
-
-
   const service = new Service();
 
   const guestSession = new GuestSession();
-  const serviseApiG = new ServiceApi();
-
-
-
+  const genres_api = new GenresAPI();
   const  dataReceiver = (data) => {
     setGuestId(data.guest_session_id);
   }
 
   const loadGenres = (genres) => {
-    console.log('вернулось с колбека', genres);
-    
 
   let gl = genres.genres;
-  console.log(gl);
   let glArray = [];
   for (let key in gl) {
     let node = gl[key];
@@ -64,16 +55,13 @@ const MovieApp = () => {
     let name = node.name;
     glArray[id] = name;
   }
-  console.log('new Array : ', glArray);
     setGenresList(glArray);
   }
 
   useEffect(() => {
     guestSession.guestSeId(dataReceiver);
-    serviseApiG.getGenres(loadGenres);
+    genres_api.getGenres(loadGenres);
     
-    
-
   }, [])
 
   

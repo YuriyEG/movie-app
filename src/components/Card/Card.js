@@ -66,9 +66,6 @@ const Card = ({ film, guestSessionId, genresList }) => {
       genresTrain.push(genresList[ids[i]]);
     }
   }
-
-  console.log('genresTrain: ', genresTrain);
-
   
   return (
     <div className="card">
