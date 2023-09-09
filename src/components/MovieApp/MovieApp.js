@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Online, Offline } from 'react-detect-offline';
-import useToken from 'antd/es/theme/useToken';
-import { Card, notification } from 'antd';
-import { da } from 'date-fns/locale';
 
 import GuestSession from '../../modules/GuestSession';
 import Service from '../../modules/service';
@@ -28,9 +25,9 @@ const MovieApp = () => {
   const [genresObj, setGenresObj] = useState({});
   const service = new Service();
   const guestSession = new GuestSession();
-  const genres_api = new GenresAPI();
-  const dataReceiver = (data) => {
-    setGuestId(data.guest_session_id);
+  const genresApi = new GenresAPI();
+  const dataReceiver = (receivedData) => {
+    setGuestId(receivedData.guest_session_id);
   };
 
   const loadGenres = (genres) => {
@@ -44,17 +41,20 @@ const MovieApp = () => {
 
   useEffect(() => {
     guestSession.guestSeId(dataReceiver);
-    genres_api.getGenres(loadGenres);
+    genresApi.getGenres(loadGenres);
   }, []);
 
-  async function getData(query, page) {
-    if (query === undefined) {
-      query = savedValue;
+  async function getData(receivedQuery, page) {
+    let requestQuery;
+    if (receivedQuery === undefined) {
+      requestQuery = savedValue;
+    } else {
+      requestQuery = receivedQuery;
     }
     setNoResults(false);
     setIsNotFound(false);
     setSpin(true);
-    const result = await service.getPageMovies(query, page, () => setIsNotFound(true));
+    const result = await service.getPageMovies(requestQuery, page, () => setIsNotFound(true));
 
     setData(result);
 
@@ -64,7 +64,7 @@ const MovieApp = () => {
       if (result.results.length === 0) {
         setNoResults(true);
       }
-      if (query === '') {
+      if (receivedQuery === '') {
         setNoResults(false);
       }
     }
@@ -83,7 +83,7 @@ const MovieApp = () => {
   return (
     <div className="movie-app">
       <div className="main">
-        <Filter message={alertMessage} mode={mode} setMode={setMode} />
+        <Filter message={'Отсутствует сеть'} mode={mode} setMode={setMode} />
         {mode ? <SearchForm getDataHandler={getDataHandler} setSavedValue={setSavedValue} /> : null}
 
         <Offline>
