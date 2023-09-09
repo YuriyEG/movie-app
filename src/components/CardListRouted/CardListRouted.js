@@ -32,4 +32,8 @@ const CardListRouted = ({ curData, guestSessionId, genresList }) => {
   );
 };
 
+CardListRouted.defaultProps = {
+  curData: { page: 1, results: [], total_pages: 1, total_results: 0 },
+};
+
 export default CardListRouted;

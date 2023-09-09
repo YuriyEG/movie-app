@@ -4,14 +4,10 @@ import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { Online, Offline } from 'react-detect-offline';
 import GuestSession from '../../modules/GuestSession';
-
-
 import Service from '../../modules/service';
 import GenresAPI from '../../modules/GenresAPI';
-
 import LoadingSpin from '../Spin/Spin';
 import './MovieApp.css';
-
 import SearchForm from '../SearchForm/SearchForm';
 import Pagin from '../Pagin/Pagin';
 import CardList from '../CardList/CardList';
@@ -20,9 +16,8 @@ import Filter from '../Filter/Filter';
 import AlertBox from '../Alert/AlertBox';
 import useToken from 'antd/es/theme/useToken';
 import { Card, notification } from 'antd';
-
-
 import { da } from 'date-fns/locale';
+
 
 const MovieApp = () => {
   const [isNotFound, setIsNotFound] = useState(false);
@@ -30,22 +25,18 @@ const MovieApp = () => {
   const [spin, setSpin] = useState(false);
   const [data, setData] = useState({});
   const [isBlock, setIsBlock] = useState(false);
-  
   const [savedValue, setSavedValue] = useState('');
-
   const [mode, setMode] = useState(true);
-
   const [guestId, setGuestId] = useState('');
   const [genresList, setGenresList] = useState('');
   const service = new Service();
-
   const guestSession = new GuestSession();
   const genres_api = new GenresAPI();
   const  dataReceiver = (data) => {
     setGuestId(data.guest_session_id);
   }
 
-  const loadGenres = (genres) => {
+const loadGenres = (genres) => {
 
   let gl = genres.genres;
   let glArray = [];
@@ -54,19 +45,18 @@ const MovieApp = () => {
     let id = node.id;
     let name = node.name;
     glArray[id] = name;
-  }
+    }
     setGenresList(glArray);
-  }
+}
 
-  useEffect(() => {
+useEffect(() => {
     guestSession.guestSeId(dataReceiver);
     genres_api.getGenres(loadGenres);
-    
   }, [])
 
   
   
-  async function getData(query, page) {
+async function getData(query, page) {
 
     if (query === undefined) {
       query = savedValue;
@@ -91,26 +81,23 @@ const MovieApp = () => {
     }
 
 
-  }
+}
 
   function getDataHandler(value, page = 1) {
 
-       
       if (!isBlock) {
         setIsBlock(true);
         setTimeout(() => {
           getData(value, page);
           setIsBlock(false);
         }, 800);
-        
       } 
 
-      }
+  }
       
   const alertMessage = 'Отсутствует сеть';
   const alertType = 'error';
 
-  const curData = { page: 1, results: [], total_pages: 1, total_results: 0 };
 
   
  
@@ -143,7 +130,7 @@ const MovieApp = () => {
           null
         }
         {
-          (noResults && mode)?
+          noResults && mode ?
                   <div className='alertWrapper'>
           <AlertBox message='Поиск не дал результатов' type='error'/>
         </div>
@@ -158,9 +145,9 @@ const MovieApp = () => {
         
         {spin ? <LoadingSpin /> : <div></div>}
 
-        {(data.results && mode) ? <CardList genresList={genresList} guestSessionId={guestId} list={data.results} /> : null }
+        {data.results && mode ? <CardList genresList={genresList} guestSessionId={guestId} list={data.results} /> : null }
         { !mode ?
-        <CardListRouted genresList={genresList} curData={curData} guestSessionId={guestId}/>
+        <CardListRouted genresList={genresList} guestSessionId={guestId}/>
         :
         null 
        }
