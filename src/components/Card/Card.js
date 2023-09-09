@@ -26,7 +26,7 @@ const editText = (text, length, end) => {
 
 
 
-const Card = ({ film, guestSessionId, genresList }) => {
+const Card = ({ film, guestSessionId, genresObj }) => {
 
 
 
@@ -61,9 +61,10 @@ const Card = ({ film, guestSessionId, genresList }) => {
   
   let ids = film.genre_ids;
   let genresTrain = [];
+  console.log(genresObj, 'card');
   for (let i=0; i<5; i++) {
     if  (ids[i]) {
-      genresTrain.push(genresList[ids[i]]);
+      genresTrain.push(genresObj[ids[i]]);
     }
   }
   

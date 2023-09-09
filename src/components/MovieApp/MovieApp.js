@@ -25,7 +25,7 @@ const MovieApp = () => {
   const [savedValue, setSavedValue] = useState('');
   const [mode, setMode] = useState(true);
   const [guestId, setGuestId] = useState('');
-  const [genresList, setGenresList] = useState('');
+  const [genresObj, setGenresObj] = useState({});
   const service = new Service();
   const guestSession = new GuestSession();
   const genres_api = new GenresAPI();
@@ -35,14 +35,11 @@ const MovieApp = () => {
 
   const loadGenres = (genres) => {
     const gl = genres.genres;
-    const glArray = [];
-    for (const key in gl) {
-      const node = gl[key];
-      const { id } = node;
-      const { name } = node;
-      glArray[id] = name;
-    }
-    setGenresList(glArray);
+    const curObj = {};
+    gl.forEach((element) => {
+      curObj[element.id] = element.name;
+    });
+    setGenresObj(curObj);
   };
 
   useEffect(() => {
@@ -83,9 +80,6 @@ const MovieApp = () => {
     }
   }
 
-  const alertMessage = 'Отсутствует сеть';
-  const alertType = 'error';
-
   return (
     <div className="movie-app">
       <div className="main">
@@ -94,7 +88,7 @@ const MovieApp = () => {
 
         <Offline>
           <div className="alertWrapper">
-            <AlertBox message={alertMessage} type={alertType} />
+            <AlertBox message={'Отсутствует сеть'} type={'error'} />
           </div>
         </Offline>
         {isNotFound ? (
@@ -112,10 +106,8 @@ const MovieApp = () => {
 
         {spin ? <LoadingSpin /> : <div></div>}
 
-        {data.results && mode ? (
-          <CardList genresList={genresList} guestSessionId={guestId} list={data.results} />
-        ) : null}
-        {!mode ? <CardListRouted genresList={genresList} guestSessionId={guestId} /> : null}
+        {data.results && mode ? <CardList genresObj={genresObj} guestSessionId={guestId} list={data.results} /> : null}
+        {!mode ? <CardListRouted genresObj={genresObj} guestSessionId={guestId} /> : null}
 
         {mode ? <Pagin getDataDebounced={getDataHandler} page={data.page} totalPages={data.total_pages} /> : null}
       </div>
