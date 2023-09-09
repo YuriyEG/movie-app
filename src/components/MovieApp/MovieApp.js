@@ -1,8 +1,9 @@
-/* eslint-disable */
-
-import React, { useState } from 'react';
-import { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Online, Offline } from 'react-detect-offline';
+import useToken from 'antd/es/theme/useToken';
+import { Card, notification } from 'antd';
+import { da } from 'date-fns/locale';
+
 import GuestSession from '../../modules/GuestSession';
 import Service from '../../modules/service';
 import GenresAPI from '../../modules/GenresAPI';
@@ -14,10 +15,6 @@ import CardList from '../CardList/CardList';
 import CardListRouted from '../CardListRouted/CardListRouted';
 import Filter from '../Filter/Filter';
 import AlertBox from '../Alert/AlertBox';
-import useToken from 'antd/es/theme/useToken';
-import { Card, notification } from 'antd';
-import { da } from 'date-fns/locale';
-
 
 const MovieApp = () => {
   const [isNotFound, setIsNotFound] = useState(false);
@@ -32,32 +29,28 @@ const MovieApp = () => {
   const service = new Service();
   const guestSession = new GuestSession();
   const genres_api = new GenresAPI();
-  const  dataReceiver = (data) => {
+  const dataReceiver = (data) => {
     setGuestId(data.guest_session_id);
-  }
+  };
 
-const loadGenres = (genres) => {
-
-  let gl = genres.genres;
-  let glArray = [];
-  for (let key in gl) {
-    let node = gl[key];
-    let id = node.id;
-    let name = node.name;
-    glArray[id] = name;
+  const loadGenres = (genres) => {
+    const gl = genres.genres;
+    const glArray = [];
+    for (const key in gl) {
+      const node = gl[key];
+      const { id } = node;
+      const { name } = node;
+      glArray[id] = name;
     }
     setGenresList(glArray);
-}
+  };
 
-useEffect(() => {
+  useEffect(() => {
     guestSession.guestSeId(dataReceiver);
     genres_api.getGenres(loadGenres);
-  }, [])
+  }, []);
 
-  
-  
-async function getData(query, page) {
-
+  async function getData(query, page) {
     if (query === undefined) {
       query = savedValue;
     }
@@ -69,94 +62,62 @@ async function getData(query, page) {
     setData(result);
 
     setSpin(false);
-    
+
     if (result !== 'not found' && result !== 'disconnected') {
       if (result.results.length === 0) {
         setNoResults(true);
-      };
-          if (query === '') {
-      setNoResults(false);
-    };
-
+      }
+      if (query === '') {
+        setNoResults(false);
+      }
     }
-
-
-}
+  }
 
   function getDataHandler(value, page = 1) {
-
-      if (!isBlock) {
-        setIsBlock(true);
-        setTimeout(() => {
-          getData(value, page);
-          setIsBlock(false);
-        }, 800);
-      } 
-
+    if (!isBlock) {
+      setIsBlock(true);
+      setTimeout(() => {
+        getData(value, page);
+        setIsBlock(false);
+      }, 800);
+    }
   }
-      
+
   const alertMessage = 'Отсутствует сеть';
   const alertType = 'error';
 
-
-  
- 
-
   return (
-    <div className="movie-app" >
+    <div className="movie-app">
       <div className="main">
-
         <Filter message={alertMessage} mode={mode} setMode={setMode} />
-        { mode ? 
-        <SearchForm getDataHandler={getDataHandler} setSavedValue={setSavedValue} />
-        :
-        null
-        }
-        
-        
+        {mode ? <SearchForm getDataHandler={getDataHandler} setSavedValue={setSavedValue} /> : null}
+
         <Offline>
-          <div className='alertWrapper'>
-          <AlertBox message={alertMessage} type={alertType}/>
-        </div>
+          <div className="alertWrapper">
+            <AlertBox message={alertMessage} type={alertType} />
+          </div>
         </Offline>
-        {
-          isNotFound ? 
-                  <Online>
-        <div className='alertWrapper'>
-          <AlertBox message='Запрашиваемые данные не найдены. Ошибка 404' type='error'/>
-        </div>
-        </Online>
-          :
-          null
-        }
-        {
-          noResults && mode ?
-                  <div className='alertWrapper'>
-          <AlertBox message='Поиск не дал результатов' type='error'/>
-        </div>
+        {isNotFound ? (
+          <Online>
+            <div className="alertWrapper">
+              <AlertBox message="Запрашиваемые данные не найдены. Ошибка 404" type="error" />
+            </div>
+          </Online>
+        ) : null}
+        {noResults && mode ? (
+          <div className="alertWrapper">
+            <AlertBox message="Поиск не дал результатов" type="error" />
+          </div>
+        ) : null}
 
-          :
-          null
-
-        }
-
-        
-        
-        
         {spin ? <LoadingSpin /> : <div></div>}
 
-        {data.results && mode ? <CardList genresList={genresList} guestSessionId={guestId} list={data.results} /> : null }
-        { !mode ?
-        <CardListRouted genresList={genresList} guestSessionId={guestId}/>
-        :
-        null 
-       }
+        {data.results && mode ? (
+          <CardList genresList={genresList} guestSessionId={guestId} list={data.results} />
+        ) : null}
+        {!mode ? <CardListRouted genresList={genresList} guestSessionId={guestId} /> : null}
 
-      
-      { mode ? <Pagin getDataDebounced={getDataHandler} page={data.page} totalPages={data.total_pages}/> : null }
-  
-     
-     
+        {mode ? <Pagin getDataDebounced={getDataHandler} page={data.page} totalPages={data.total_pages} /> : null}
       </div>
     </div>
   );
