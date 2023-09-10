@@ -8,7 +8,7 @@ const CardListRated = ({ ratedData, getRatedByPagination, genresObj, rateCard })
     <div>
       <div className="cardListRouted">
         {ratedData.results.map((film) => (
-          <Card key={Math.random()} genresObj={genresObj} rated={true} rateCard={rateCard} film={film} />
+          <Card key={Math.random()} genresObj={genresObj} rateCard={rateCard} film={film} />
         ))}
       </div>
       <RatedPagin page={ratedData.page} totalPages={ratedData.total_pages} getDataDebounced={getRatedByPagination} />
