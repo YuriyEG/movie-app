@@ -6,7 +6,6 @@ import Service from '../../modules/service';
 import GenresAPI from '../../modules/GenresAPI';
 import LoadingSpin from '../LoadingSpin';
 import SearchForm from '../SearchForm';
-import Pagin from '../Pagin';
 import CardList from '../CardList';
 import CardListRated from '../CardListRated';
 import RouterTabs from '../RouterTabs';
@@ -114,10 +113,16 @@ const MovieApp = () => {
 
         {spin ? <LoadingSpin /> : <div></div>}
 
-        {data.results && mode ? <CardList genresObj={genresObj} guestSessionId={guestId} list={data.results} /> : null}
+        {data.results && mode ? (
+          <CardList
+            data={data}
+            getDataHandler={getDataHandler}
+            genresObj={genresObj}
+            guestSessionId={guestId}
+            list={data.results}
+          />
+        ) : null}
         {!mode ? <CardListRated genresObj={genresObj} guestSessionId={guestId} /> : null}
-
-        {mode ? <Pagin getDataDebounced={getDataHandler} page={data.page} totalPages={data.total_pages} /> : null}
       </div>
     </div>
   );
