@@ -1,8 +1,6 @@
 import React from 'react';
 
-import Card from '../Card/Card';
-
-import './CardList.css';
+import Card from '../Card';
 
 const CardList = ({ list, guestSessionId, genresObj }) => {
   return (

@@ -4,14 +4,13 @@ import { Online, Offline } from 'react-detect-offline';
 import GuestSession from '../../modules/GuestSession';
 import Service from '../../modules/service';
 import GenresAPI from '../../modules/GenresAPI';
-import LoadingSpin from '../Spin/Spin';
-import './MovieApp.css';
-import SearchForm from '../SearchForm/SearchForm';
-import Pagin from '../Pagin/Pagin';
-import CardList from '../CardList/CardList';
-import CardListRouted from '../CardListRouted/CardListRouted';
-import Filter from '../Filter/Filter';
-import AlertBox from '../Alert/AlertBox';
+import LoadingSpin from '../LoadingSpin';
+import SearchForm from '../SearchForm';
+import Pagin from '../Pagin';
+import CardList from '../CardList';
+import CardListRouted from '../CardListRouted';
+import Filter from '../Filter';
+import AlertBox from '../Alert';
 
 const MovieApp = () => {
   const [isNotFound, setIsNotFound] = useState(false);

@@ -1,6 +1,5 @@
 import React from 'react';
 import { Pagination } from 'antd';
-import './Pagin.css';
 
 const Pagin = ({ getDataDebounced, page, totalPages }) => {
   const change = (curPage) => {

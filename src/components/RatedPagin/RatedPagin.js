@@ -1,6 +1,5 @@
 import React from 'react';
 import { Pagination } from 'antd';
-import './RatedPagin.css';
 
 const RatedPagin = ({ getDataDebounced, page, totalPages }) => {
   const change = (curPage) => {

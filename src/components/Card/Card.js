@@ -4,8 +4,7 @@ import React from 'react';
 
 
 import transformDate from '../../modules/transformDate';
-import './Card.css';
-import Stars from '../Stars/Stars';
+import Stars from '../Stars';
 import '../Stars/Stars.css';
 import GuestSession from '../../modules/GuestSession';
 import { isDate } from 'date-fns/esm';

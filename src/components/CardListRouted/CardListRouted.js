@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
 
-import Card from '../Card/Card';
+import Card from '../Card';
 import GuestSession from '../../modules/GuestSession';
-import RatedPagin from '../RatedPagin/RatedPagin';
-import './CardListRouted.css';
+import RatedPagin from '../RatedPagin';
 
 const guestSession = new GuestSession();
 
