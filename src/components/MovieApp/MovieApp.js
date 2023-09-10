@@ -18,11 +18,12 @@ const MovieApp = () => {
   const [noResults, setNoResults] = useState(false);
   const [spin, setSpin] = useState(false);
   const [data, setData] = useState({});
-  const [isBlock, setIsBlock] = useState(false);
+
   const [savedValue, setSavedValue] = useState('');
   const [mode, setMode] = useState(true);
   const [guestId, setGuestId] = useState('');
   const [genresObj, setGenresObj] = useState({});
+  const [timerId, setTimerId] = useState(null);
   const service = new Service();
   const guestSession = new GuestSession();
   const genresApi = new GenresAPI();
@@ -71,12 +72,19 @@ const MovieApp = () => {
   }
 
   function getDataHandler(value, page = 1) {
-    if (!isBlock) {
-      setIsBlock(true);
-      setTimeout(() => {
+    if (timerId === null) {
+      const cur = setTimeout(() => {
         getData(value, page);
-        setIsBlock(false);
-      }, 800);
+        setTimerId(null);
+      }, 1000);
+      setTimerId(cur);
+    } else {
+      clearTimeout(timerId);
+      const cur = setTimeout(() => {
+        getData(value, page);
+        setTimerId(null);
+      }, 700);
+      setTimerId(cur);
     }
   }
 

@@ -21,7 +21,6 @@ export default class Service extends Component {
         if (result.status === 404 && movieName !== '') {
           callback();
         }
-        // throw new Error(`Failed to Fetch: ${url} Description: ${result.statusText}`);
         return 'not found';
       }
 
