@@ -1,36 +1,19 @@
 /* eslint-disable */
 import React from 'react';
-
-
+import editDescription from '../../modules/editDescription';
 
 import transformDate from '../../modules/transformDate';
 import Stars from '../Stars';
 import '../Stars/Stars.css';
 import GuestSession from '../../modules/GuestSession';
-import { isDate } from 'date-fns/esm';
-
-const editText = (text, length, end) => {
-  if (text.length < length) {
-    return `${text}`;
-  }
-  let cur = text.slice(0, length, end);
-  let i = length;
-  while (text[i] !== ' ' && text[i]) {
-    cur += text[i];
-    i += 1;
-  }
-
-  return `${cur}${end}`;
-};
-
 
 
 const Card = ({ film, guestSessionId, genresObj }) => {
 
 
 
-  const overview = editText(film.overview, 140, '...');
-  const title = editText(film.title, 20, '');
+  const overview = editDescription(film.overview, 140, '...');
+  const title = editDescription(film.title, 20, '');
   const average = film.vote_average.toFixed(1);
   const date = transformDate(film.release_date);
   const rating = film.rating;
@@ -47,8 +30,15 @@ const Card = ({ film, guestSessionId, genresObj }) => {
   }
   
   const imageUrl = film.poster_path;
+  let posterImage;
+  if (imageUrl === null) {
+    console.log('its null!');
+    posterImage = './picture.jpg';
+  } else {
+    posterImage = `https://image.tmdb.org/t/p/w500${imageUrl}`;
+  }
   
-  let posterImage = `https://image.tmdb.org/t/p/w500${imageUrl}`;
+  
 
   
 
