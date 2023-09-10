@@ -5,29 +5,18 @@ import editDescription from '../../modules/editDescription';
 import transformDate from '../../modules/transformDate';
 import Stars from '../Stars';
 import '../Stars/Stars.css';
-import GuestSession from '../../modules/GuestSession';
+import getColor from '../../modules/getColor';
 
 
-const Card = ({ film, guestSessionId, genresObj }) => {
-
-
+const Card = ({ film,  genresObj, rateCard }) => {
 
   const overview = editDescription(film.overview, 140, '...');
   const title = editDescription(film.title, 20, '');
   const average = film.vote_average.toFixed(1);
   const date = transformDate(film.release_date);
   const rating = film.rating;
+  const color = getColor(film.vote_average);
 
-  let color;
-  if (rating <= 3) {
-    color = '#E90000'
-  } else if (rating <=5 && rating > 3) {
-    color = '#E97E00'
-  } else if (rating <=7 && rating > 5) {
-    color = '#E9D100'
-  } else if (rating > 7) {
-    color = '#66E900'
-  }
   
   const imageUrl = film.poster_path;
   let posterImage;
@@ -37,14 +26,8 @@ const Card = ({ film, guestSessionId, genresObj }) => {
     posterImage = `https://image.tmdb.org/t/p/w500${imageUrl}`;
   }
   
-  
-
-  
-
-  const guestSession = new GuestSession();
-  
-  const RateCard = (rate) => {
-    guestSession.postRateStars(guestSessionId, film.id , rate)
+  const RateFilm = (rate) => {
+    rateCard(rate, film.id);
   }
   
   let ids = film.genre_ids;
@@ -73,7 +56,7 @@ const Card = ({ film, guestSessionId, genresObj }) => {
         <div className="card__text">{overview}</div>
 
         <div className="card__component-wrapper">
-          <Stars rating={rating} rateById={RateCard}/>
+          <Stars rating={rating} rateById={RateFilm}/>
         </div>
       </div>
     </div>

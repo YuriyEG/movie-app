@@ -13,16 +13,16 @@ import AlertBox from '../Alert';
 
 const MovieApp = () => {
   const [isNotFound, setIsNotFound] = useState(false);
-
   const [noResults, setNoResults] = useState(false);
   const [spin, setSpin] = useState(false);
   const [data, setData] = useState({});
-
   const [savedValue, setSavedValue] = useState('');
   const [mode, setMode] = useState(true);
   const [guestId, setGuestId] = useState('');
   const [genresObj, setGenresObj] = useState({});
   const [timerId, setTimerId] = useState(null);
+  const [ratedData, setRatedData] = useState({ page: 1, results: [], total_pages: 1, total_results: 0 });
+
   const service = new Service();
   const guestSession = new GuestSession();
   const genresApi = new GenresAPI();
@@ -57,7 +57,6 @@ const MovieApp = () => {
     const result = await service.getPageMovies(requestQuery, page, () => setIsNotFound(true));
 
     setData(result);
-
     setSpin(false);
 
     if (result !== 'not found' && result !== 'disconnected') {
@@ -87,10 +86,30 @@ const MovieApp = () => {
     }
   }
 
+  useEffect(() => {}, [mode]);
+
+  const showSession = (receivedRatedData) => {
+    setRatedData(receivedRatedData);
+  };
+
+  useEffect(() => {
+    if (!mode) {
+      guestSession.getSession(guestId, 1, showSession);
+    }
+  }, [mode]);
+
+  const getRatedByPagination = (ratedPage) => {
+    guestSession.getSession(guestId, ratedPage, showSession);
+  };
+
+  const rateCard = (receivedRate, filmId) => {
+    guestSession.postRateStars(guestId, filmId, receivedRate);
+  };
+
   return (
     <div className="movie-app">
       <div className="main">
-        <RouterTabs message={'Отсутствует сеть'} mode={mode} setMode={setMode} />
+        <RouterTabs mode={mode} setMode={setMode} />
         {mode ? <SearchForm getDataHandler={getDataHandler} setSavedValue={setSavedValue} /> : null}
 
         <Offline>
@@ -120,9 +139,18 @@ const MovieApp = () => {
             genresObj={genresObj}
             guestSessionId={guestId}
             list={data.results}
+            rateCard={rateCard}
           />
         ) : null}
-        {!mode ? <CardListRated genresObj={genresObj} guestSessionId={guestId} /> : null}
+        {!mode ? (
+          <CardListRated
+            ratedData={ratedData}
+            getRatedByPagination={getRatedByPagination}
+            genresObj={genresObj}
+            guestSessionId={guestId}
+            rateCard={rateCard}
+          />
+        ) : null}
       </div>
     </div>
   );
