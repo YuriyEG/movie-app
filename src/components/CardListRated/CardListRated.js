@@ -6,7 +6,7 @@ import RatedPagin from '../RatedPagin';
 
 const guestSession = new GuestSession();
 
-const CardListRouted = ({ curData, guestSessionId, genresObj }) => {
+const CardListRated = ({ curData, guestSessionId, genresObj }) => {
   const [ratedData, setRatedData] = useState(curData);
 
   const showSession = (data) => {
@@ -31,8 +31,8 @@ const CardListRouted = ({ curData, guestSessionId, genresObj }) => {
   );
 };
 
-CardListRouted.defaultProps = {
+CardListRated.defaultProps = {
   curData: { page: 1, results: [], total_pages: 1, total_results: 0 },
 };
 
-export default CardListRouted;
+export default CardListRated;

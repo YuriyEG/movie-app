@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const Filter = ({ setMode }) => {
+const RouterTabs = ({ setMode }) => {
   const [searchOn, setSearchOn] = useState(true);
 
   let searchStyle = 'filter__search';
@@ -37,4 +37,4 @@ const Filter = ({ setMode }) => {
   );
 };
 
-export default Filter;
+export default RouterTabs;

@@ -8,8 +8,8 @@ import LoadingSpin from '../LoadingSpin';
 import SearchForm from '../SearchForm';
 import Pagin from '../Pagin';
 import CardList from '../CardList';
-import CardListRouted from '../CardListRouted';
-import Filter from '../Filter';
+import CardListRated from '../CardListRated';
+import RouterTabs from '../RouterTabs';
 import AlertBox from '../Alert';
 
 const MovieApp = () => {
@@ -91,7 +91,7 @@ const MovieApp = () => {
   return (
     <div className="movie-app">
       <div className="main">
-        <Filter message={'Отсутствует сеть'} mode={mode} setMode={setMode} />
+        <RouterTabs message={'Отсутствует сеть'} mode={mode} setMode={setMode} />
         {mode ? <SearchForm getDataHandler={getDataHandler} setSavedValue={setSavedValue} /> : null}
 
         <Offline>
@@ -115,7 +115,7 @@ const MovieApp = () => {
         {spin ? <LoadingSpin /> : <div></div>}
 
         {data.results && mode ? <CardList genresObj={genresObj} guestSessionId={guestId} list={data.results} /> : null}
-        {!mode ? <CardListRouted genresObj={genresObj} guestSessionId={guestId} /> : null}
+        {!mode ? <CardListRated genresObj={genresObj} guestSessionId={guestId} /> : null}
 
         {mode ? <Pagin getDataDebounced={getDataHandler} page={data.page} totalPages={data.total_pages} /> : null}
       </div>
