@@ -26,7 +26,11 @@ const MovieApp = () => {
   const service = new Service();
   const guestSession = new GuestSession();
   const genresApi = new GenresAPI();
+
   const dataReceiver = (receivedData) => {
+    if (receivedData === 'no_guest_id') {
+      console.log('не получен идентификатор');
+    }
     setGuestId(receivedData.guest_session_id);
   };
 
@@ -86,9 +90,10 @@ const MovieApp = () => {
     }
   }
 
-  useEffect(() => {}, [mode]);
-
   const showSession = (receivedRatedData) => {
+    if (receivedRatedData === 'no_rated_films') {
+      console.log('ошибка при загрузке оцененных фильмов');
+    }
     setRatedData(receivedRatedData);
   };
 
@@ -103,7 +108,7 @@ const MovieApp = () => {
   };
 
   const rateCard = (receivedRate, filmId) => {
-    guestSession.postRateStars(guestId, filmId, receivedRate);
+    guestSession.postRateStars(guestId, filmId, receivedRate, (rateData) => console.log('Ошибка при отправке оценки'));
   };
 
   return (

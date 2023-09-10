@@ -21,6 +21,7 @@ export default class Service extends Component {
         if (result.status === 404 && movieName !== '') {
           callback();
         }
+
         return 'not found';
       }
 
