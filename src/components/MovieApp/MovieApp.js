@@ -14,6 +14,7 @@ import AlertBox from '../Alert';
 
 const MovieApp = () => {
   const [isNotFound, setIsNotFound] = useState(false);
+
   const [noResults, setNoResults] = useState(false);
   const [spin, setSpin] = useState(false);
   const [data, setData] = useState({});
@@ -22,6 +23,7 @@ const MovieApp = () => {
   const [mode, setMode] = useState(true);
   const [guestId, setGuestId] = useState('');
   const [genresObj, setGenresObj] = useState({});
+  const [inputValue, setInputValue] = useState('');
   const service = new Service();
   const guestSession = new GuestSession();
   const genresApi = new GenresAPI();
@@ -42,6 +44,8 @@ const MovieApp = () => {
     guestSession.guestSeId(dataReceiver);
     genresApi.getGenres(loadGenres);
   }, []);
+
+  useEffect(() => console.table('value = ', inputValue), [inputValue]);
 
   async function getData(receivedQuery, page) {
     let requestQuery;

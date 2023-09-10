@@ -60,7 +60,6 @@ const Card = ({ film, guestSessionId, genresObj }) => {
   
   let ids = film.genre_ids;
   let genresTrain = [];
-  console.log(genresObj, 'card');
   for (let i=0; i<5; i++) {
     if  (ids[i]) {
       genresTrain.push(genresObj[ids[i]]);
