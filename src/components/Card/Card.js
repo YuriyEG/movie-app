@@ -32,7 +32,6 @@ const Card = ({ film, guestSessionId, genresObj }) => {
   const imageUrl = film.poster_path;
   let posterImage;
   if (imageUrl === null) {
-    console.log('its null!');
     posterImage = './picture.jpg';
   } else {
     posterImage = `https://image.tmdb.org/t/p/w500${imageUrl}`;
